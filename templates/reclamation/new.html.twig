@@ -1,8 +1,11 @@
-<!DOCTYPE html>
-
-<title>New Reclamation</title>
+{% extends 'basefront.html.twig' %}
 
 {% block body %}
+<div class="container-xxl py-5">
+     <div class="container">
+             <div class="row g-0">
+                    <div class="bg-secondary p-5">
+                        <p class="d-inline-block bg-dark text-primary py-1 px-4">reclamation</p>
     <h1>Create new Reclamation</h1>
 
     {{ include('reclamation/_form.html.twig') }}
