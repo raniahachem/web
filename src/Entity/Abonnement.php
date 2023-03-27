@@ -42,46 +42,5 @@ class Abonnement
      */
     private $modepaiementab;
 
-    public function getIdab(): ?int
-    {
-        return $this->idab;
-    }
-
-    public function getTypeab(): ?string
-    {
-        return $this->typeab;
-    }
-
-    public function setTypeab(string $typeab): self
-    {
-        $this->typeab = $typeab;
-
-        return $this;
-    }
-
-    public function getPrixab(): ?float
-    {
-        return $this->prixab;
-    }
-
-    public function setPrixab(float $prixab): self
-    {
-        $this->prixab = $prixab;
-
-        return $this;
-    }
-
-    public function getModepaiementab(): ?string
-    {
-        return $this->modepaiementab;
-    }
-
-    public function setModepaiementab(string $modepaiementab): self
-    {
-        $this->modepaiementab = $modepaiementab;
-
-        return $this;
-    }
-
 
 }

@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -58,16 +57,6 @@ class Contrat
     private $qrCode;
 
     /**
-     * @var \Conducteur
-     *
-     * @ORM\ManyToOne(targetEntity="Conducteur")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_conducteur", referencedColumnName="id_conducteur")
-     * })
-     */
-    private $idConducteur;
-
-    /**
      * @var \Admin
      *
      * @ORM\ManyToOne(targetEntity="Admin")
@@ -77,94 +66,15 @@ class Contrat
      */
     private $idAdmin;
 
-    public function getIdContrat(): ?int
-    {
-        return $this->idContrat;
-    }
-
-    public function getDateDebut(): ?\DateTimeInterface
-    {
-        return $this->dateDebut;
-    }
-
-    public function setDateDebut(\DateTimeInterface $dateDebut): self
-    {
-        $this->dateDebut = $dateDebut;
-
-        return $this;
-    }
-
-    public function getDateFin(): ?\DateTimeInterface
-    {
-        return $this->dateFin;
-    }
-
-    public function setDateFin(\DateTimeInterface $dateFin): self
-    {
-        $this->dateFin = $dateFin;
-
-        return $this;
-    }
-
-    public function getPrix(): ?int
-    {
-        return $this->prix;
-    }
-
-    public function setPrix(int $prix): self
-    {
-        $this->prix = $prix;
-
-        return $this;
-    }
-
-    public function getStatut(): ?string
-    {
-        return $this->statut;
-    }
-
-    public function setStatut(string $statut): self
-    {
-        $this->statut = $statut;
-
-        return $this;
-    }
-
-    public function getQrCode(): ?string
-    {
-        return $this->qrCode;
-    }
-
-    public function setQrCode(string $qrCode): self
-    {
-        $this->qrCode = $qrCode;
-
-        return $this;
-    }
-
-    public function getIdConducteur(): ?Conducteur
-    {
-        return $this->idConducteur;
-    }
-
-    public function setIdConducteur(?Conducteur $idConducteur): self
-    {
-        $this->idConducteur = $idConducteur;
-
-        return $this;
-    }
-
-    public function getIdAdmin(): ?Admin
-    {
-        return $this->idAdmin;
-    }
-
-    public function setIdAdmin(?Admin $idAdmin): self
-    {
-        $this->idAdmin = $idAdmin;
-
-        return $this;
-    }
+    /**
+     * @var \Conducteur
+     *
+     * @ORM\ManyToOne(targetEntity="Conducteur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_conducteur", referencedColumnName="id_conducteur")
+     * })
+     */
+    private $idConducteur;
 
 
 }

@@ -2,13 +2,12 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * HistoriqueReservation
  *
- * @ORM\Table(name="historique_reservation", indexes={@ORM\Index(name="id_conducteur", columns={"id_conducteur"}), @ORM\Index(name="id_client", columns={"id_client"})})
+ * @ORM\Table(name="historique_reservation", indexes={@ORM\Index(name="id_client", columns={"id_client"}), @ORM\Index(name="id_conducteur", columns={"id_conducteur"})})
  * @ORM\Entity
  */
 class HistoriqueReservation
@@ -97,131 +96,6 @@ class HistoriqueReservation
      * })
      */
     private $idClient;
-
-    public function getIdHistoriqueReservation(): ?int
-    {
-        return $this->idHistoriqueReservation;
-    }
-
-    public function getIdReservation(): ?int
-    {
-        return $this->idReservation;
-    }
-
-    public function setIdReservation(int $idReservation): self
-    {
-        $this->idReservation = $idReservation;
-
-        return $this;
-    }
-
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(?\DateTimeInterface $date): self
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    public function getDateDepartReelle(): ?\DateTimeInterface
-    {
-        return $this->dateDepartReelle;
-    }
-
-    public function setDateDepartReelle(?\DateTimeInterface $dateDepartReelle): self
-    {
-        $this->dateDepartReelle = $dateDepartReelle;
-
-        return $this;
-    }
-
-    public function getDateArriveReelle(): ?\DateTimeInterface
-    {
-        return $this->dateArriveReelle;
-    }
-
-    public function setDateArriveReelle(?\DateTimeInterface $dateArriveReelle): self
-    {
-        $this->dateArriveReelle = $dateArriveReelle;
-
-        return $this;
-    }
-
-    public function getLieuDepart(): ?string
-    {
-        return $this->lieuDepart;
-    }
-
-    public function setLieuDepart(?string $lieuDepart): self
-    {
-        $this->lieuDepart = $lieuDepart;
-
-        return $this;
-    }
-
-    public function getLieuDestination(): ?string
-    {
-        return $this->lieuDestination;
-    }
-
-    public function setLieuDestination(?string $lieuDestination): self
-    {
-        $this->lieuDestination = $lieuDestination;
-
-        return $this;
-    }
-
-    public function getAvisClient(): ?string
-    {
-        return $this->avisClient;
-    }
-
-    public function setAvisClient(?string $avisClient): self
-    {
-        $this->avisClient = $avisClient;
-
-        return $this;
-    }
-
-    public function getStatusReservation(): ?string
-    {
-        return $this->statusReservation;
-    }
-
-    public function setStatusReservation(?string $statusReservation): self
-    {
-        $this->statusReservation = $statusReservation;
-
-        return $this;
-    }
-
-    public function getIdConducteur(): ?Conducteur
-    {
-        return $this->idConducteur;
-    }
-
-    public function setIdConducteur(?Conducteur $idConducteur): self
-    {
-        $this->idConducteur = $idConducteur;
-
-        return $this;
-    }
-
-    public function getIdClient(): ?Client
-    {
-        return $this->idClient;
-    }
-
-    public function setIdClient(?Client $idClient): self
-    {
-        $this->idClient = $idClient;
-
-        return $this;
-    }
 
 
 }

@@ -35,34 +35,5 @@ class Admin
      */
     private $mdpAd;
 
-    public function getIdAdmin(): ?int
-    {
-        return $this->idAdmin;
-    }
-
-    public function getEmailAd(): ?string
-    {
-        return $this->emailAd;
-    }
-
-    public function setEmailAd(string $emailAd): self
-    {
-        $this->emailAd = $emailAd;
-
-        return $this;
-    }
-
-    public function getMdpAd(): ?string
-    {
-        return $this->mdpAd;
-    }
-
-    public function setMdpAd(string $mdpAd): self
-    {
-        $this->mdpAd = $mdpAd;
-
-        return $this;
-    }
-
 
 }

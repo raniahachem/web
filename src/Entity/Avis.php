@@ -38,34 +38,5 @@ class Avis
      */
     private $idConducteur;
 
-    public function getIdAvis(): ?int
-    {
-        return $this->idAvis;
-    }
-
-    public function getNote(): ?int
-    {
-        return $this->note;
-    }
-
-    public function setNote(int $note): self
-    {
-        $this->note = $note;
-
-        return $this;
-    }
-
-    public function getIdConducteur(): ?Conducteur
-    {
-        return $this->idConducteur;
-    }
-
-    public function setIdConducteur(?Conducteur $idConducteur): self
-    {
-        $this->idConducteur = $idConducteur;
-
-        return $this;
-    }
-
 
 }

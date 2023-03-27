@@ -2,13 +2,12 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Reservation
  *
- * @ORM\Table(name="reservation", indexes={@ORM\Index(name="id_conducteur", columns={"id_conducteur"}), @ORM\Index(name="id_client", columns={"id_client"}), @ORM\Index(name="id_offre", columns={"id_offre"})})
+ * @ORM\Table(name="reservation", indexes={@ORM\Index(name="id_offre", columns={"id_offre"}), @ORM\Index(name="id_conducteur", columns={"id_conducteur"}), @ORM\Index(name="id_client", columns={"id_client"})})
  * @ORM\Entity
  */
 class Reservation
@@ -76,95 +75,6 @@ class Reservation
      * })
      */
     private $idClient;
-
-    public function getIdReservation(): ?int
-    {
-        return $this->idReservation;
-    }
-
-    public function getNbPlace(): ?int
-    {
-        return $this->nbPlace;
-    }
-
-    public function setNbPlace(int $nbPlace): self
-    {
-        $this->nbPlace = $nbPlace;
-
-        return $this;
-    }
-
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTimeInterface $date): self
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    public function getPointDeDepart(): ?string
-    {
-        return $this->pointDeDepart;
-    }
-
-    public function setPointDeDepart(string $pointDeDepart): self
-    {
-        $this->pointDeDepart = $pointDeDepart;
-
-        return $this;
-    }
-
-    public function getPointArrive(): ?string
-    {
-        return $this->pointArrive;
-    }
-
-    public function setPointArrive(string $pointArrive): self
-    {
-        $this->pointArrive = $pointArrive;
-
-        return $this;
-    }
-
-    public function getIdOffre(): ?int
-    {
-        return $this->idOffre;
-    }
-
-    public function setIdOffre(int $idOffre): self
-    {
-        $this->idOffre = $idOffre;
-
-        return $this;
-    }
-
-    public function getIdConducteur(): ?Conducteur
-    {
-        return $this->idConducteur;
-    }
-
-    public function setIdConducteur(?Conducteur $idConducteur): self
-    {
-        $this->idConducteur = $idConducteur;
-
-        return $this;
-    }
-
-    public function getIdClient(): ?Client
-    {
-        return $this->idClient;
-    }
-
-    public function setIdClient(?Client $idClient): self
-    {
-        $this->idClient = $idClient;
-
-        return $this;
-    }
 
 
 }
