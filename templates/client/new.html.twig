@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<title>New Client</title>
+
+{% block body %}
+    <h1>Create new Client</h1>
+
+    {{ include('client/_form.html.twig') }}
+
+    <a href="{{ path('app_client_index') }}">back to list</a>
+{% endblock %}

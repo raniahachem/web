@@ -1,0 +1,14 @@
+{% extends 'baseback.html.twig' %}
+
+{% block header %}
+{% endblock %}
+{% block sidebar %}
+{% endblock %}
+{% block body %}
+
+    {{ include('message/new.html.twig', {'button_label': 'Update'}) }}
+
+    {{ include('message/_delete_form.html.twig') }}
+{% endblock %}
+{% block footer %}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'baseback.html.twig' %}
+
+{% block body %}
+    <!-- Form Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Envoyer message</h6>
+                            {{ form_start(form , {'attr': {'novalidate':'novalidate'}} ) }}
+                            <form>
+                             <div class="row g-3">
+                                <div class="col-md-6">
+                                    <form class="forms-sample">
+                      <div class="form-group">
+                        {{ form_row(form.contenu, {'label':'Contenu' ,'attr':{'placeholder': 'keep it short and clear', 'class':'form-control'}}) }}
+                        </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                        {{ form_row(form.date_message, {'label':'Selectionner la date' ,'attr':{'placeholder': 'date...', 'class':'form-control'}}) }}
+                        </div>
+                                </div>
+                                
+
+                         <div class="col-12">
+                                    <div class="form-group">
+                        {{ form_row(form.id_admin, {'label':'Admin' ,'attr':{'placeholder': 'admin...', 'class':'form-control'}}) }}
+                        </div>
+                        </div> 
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-2" type="submit">Envoyer</button>
+                                </div>
+                            
+                             {{form_end(form)}}
+                        </form>
+                        <a href="{{ path('app_message_index') }}">afficher les messages envoyés</a>
+                        </div>
+                    </div>
+                     </div>
+                    </div>
+
+{% endblock %}

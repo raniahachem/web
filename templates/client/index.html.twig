@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<title>Client index</title>
+
+{% block body %}
+    <h1>Client index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cin_client</th>
+                <th>Nom_client</th>
+                <th>Prenom_client</th>
+                <th>Ville_client</th>
+                <th>Telephone_client</th>
+                <th>Email_client</th>
+                <th>Mdp_client</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.id }}</td>
+                <td>{{ client.cinClient }}</td>
+                <td>{{ client.nomClient }}</td>
+                <td>{{ client.prenomClient }}</td>
+                <td>{{ client.villeClient }}</td>
+                <td>{{ client.telephoneClient }}</td>
+                <td>{{ client.emailClient }}</td>
+                <td>{{ client.mdpClient }}</td>
+                <td>
+                    <a href="{{ path('app_client_show', {'id': client.id}) }}">show</a>
+                    <a href="{{ path('app_client_edit', {'id': client.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_client_new') }}">Create new</a>
+{% endblock %}

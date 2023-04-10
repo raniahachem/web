@@ -1,0 +1,20 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+app_reclamation_index1:
+    path: /home
+    controller: App\Controller\ReclamationController::index1
+    methods: GET
+
+order_By_Type:
+    path: /order_By_Type
+    controller: App\Controller\RecController::order_By_Type
+    methods: GET
+
+order_By_Date:
+    path: /order_By_Date
+    controller: App\Controller\RecController::order_By_Date
+    methods: GET
+   
+

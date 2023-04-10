@@ -1,0 +1,79 @@
+{% extends 'basefront.html.twig' %}
+
+{% block title %}Reclamation{% endblock %}
+
+
+{% block body %}
+    <style>
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    
+    .table th,
+    .table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+    
+    .table th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+    
+    .table td {
+        background-color: #fff;
+        color: #333;
+    }
+    
+    .table .warning td {
+        background-color: #ffe6e6;
+        color: #cc0000;
+    }
+    
+    .table .success td {
+        background-color: #e6ffe6;
+        color: #006600;
+    }
+    
+    .table .info td {
+        background-color: #e6f7ff;
+        color: #0077b3;
+    }
+    
+    .title {
+        background-color: #ff8080;
+        padding: 10px;
+        color: #fff;
+        text-align: center;
+    }
+</style>
+
+<h1 class="title">Votre réclamation a été envoyée avec succés</h1>
+
+<table class="table">
+    <tbody>
+        <tr>
+            <th>Type de reclamation</th>
+            <td>{{ reclamation.type }}</td>
+        </tr>
+        <tr>
+            <th>Date de reclamation</th>
+            <td>{{ reclamation.dateR ? reclamation.dateR|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ reclamation.description }}</td>
+        </tr>
+        <tr>
+            <th>Envoyée par le client</th>
+            <td>{{ reclamation.getClientName() }}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<a href="{{ path('app_rec_new', {'clientId': 3}) }}" style="background-color: white; color: black; border-radius: 5px; padding: 10px;">Retour</a>
+ {{ include('rec/deletefront.html.twig') }}
+{% endblock %}

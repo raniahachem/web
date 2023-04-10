@@ -1,0 +1,46 @@
+{% extends 'basefront.html.twig' %}
+{% block title %}Reclamations{% endblock %}
+
+{% block body %}
+<div class="container-xxl py-5">
+     <div class="container">
+             <div class="row g-0">
+                    <div class="bg-secondary p-5">
+                        <p class="d-inline-block bg-dark text-primary py-1 px-4">reclamation</p>
+                        <h1 class="text-uppercase mb-4">ajouter une reclamation</h1>
+                        {{ form_start(form , {'attr': {'novalidate':'novalidate'}} ) }}
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <form class="forms-sample">
+                      <div class="form-group">
+                        {{ form_row(form.type, {'label':'Type de réclamation' ,'attr':{'placeholder': 'type...', 'class':'form-control'}}) }}
+                        </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                        {{ form_row(form.date_r, {'label':'Selectionner la date' ,'attr':{'placeholder': 'date_r...', 'class':'form-control'}}) }}
+                        </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                        {{ form_row(form.description, {'label':'Description' ,'attr':{'placeholder': 'description...', 'class':'form-control'}}) }}
+                        </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Envoyer</button>
+                                </div>
+                            </div>
+                             {{form_end(form)}}
+                        </form>
+                        <a href="{{ path('app_reclamation_index') }}">back to list</a>
+                 </div>
+            </div>
+        </div>
+</div>
+
+            {% endblock %}
+            
+
+
+

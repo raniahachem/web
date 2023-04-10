@@ -1,0 +1,47 @@
+{% extends 'baseback.html.twig' %}
+{% block title %}Reclamation{% endblock %}
+
+{% block body %}
+<div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">les réclamations</h6>
+                        <a href="">Show All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for reclamation in reclamations %}
+                                <tr>
+                                     <td>{{ reclamation.id }}</td>
+                                <td>{{ reclamation.type }}</td>
+                                <td>{{ reclamation.dateR ? reclamation.dateR|date('Y-m-d') : '' }}</td>
+                                <td>{{ reclamation.description }}</td>
+                                <td>
+                                    <a href="{{ path('app_reclamation_show', {'id': reclamation.id}) }}">show</a>
+                                    <a href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}">edit</a>
+                                </td>
+                            </tr>
+                                {% else %}
+                            <tr>
+                                <td colspan="5">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+  
+{% endblock %}
+

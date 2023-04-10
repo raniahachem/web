@@ -1,0 +1,38 @@
+{% extends 'baseback.html.twig' %}
+{% block title %}Reclamation{% endblock %}
+{% block body %}
+    <h1>Messages envoyés</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Contenu</th>
+                <th>Date_message</th>
+                
+                <th>Admin</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for message in messages %}
+            <tr>
+                <td>{{ message.id }}</td>
+                <td>{{ message.contenu }}</td>
+                <td>{{ message.dateMessage ? message.dateMessage|date('Y-m-d H:i:s') : '' }}</td>
+                
+                <td>{{ message.getAdminName() }}</td>
+                <td>
+                    <a href="{{ path('app_message_show', {'id': message.id}) }}">show</a>
+                    <a href="{{ path('app_message_edit', {'id': message.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('app_rec_index') }}">back to list</a>
+{% endblock %}

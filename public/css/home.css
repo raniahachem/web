@@ -1,0 +1,249 @@
+/* home.css */
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+  }
+  
+  /* Header styles */
+  header {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+
+  }
+  
+  /* Hero section styles */
+  #hero-section {
+    background-image: url('../img/hero-bg.jpg');
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+    padding: 100px;
+    text-align: center;
+  }
+  #img-section{
+    background-image: url('../img/tunis.jpg');
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+    padding: 30px;
+   height: 550px;
+  }
+  
+  #hero-section h1 {
+    font-size: 48px;
+    margin-top: 0;
+  }
+  
+  #hero-section form {
+    margin-top: 40px;
+  }
+  
+.inputtxt {
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    padding: 10px;
+    width: 300px;
+  }
+  
+  #hero-section button {
+    background-color: #ff3b3f;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px 10px;
+    margin-left: 10px;
+  }
+  
+  #hero-section button:hover {
+    background-color: #e62227;
+  }
+  
+  /* Services section styles */
+  #services-section {
+    background-color: #f7f7f7;
+    padding: 100px;
+    text-align: center;
+  }
+  
+  #services-section h2 {
+    font-size: 36px;
+    margin-top: 0;
+  }
+  
+  #services-section ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #services-section li {
+    display: inline-block;
+    margin-right: 20px;
+    text-align: center;
+    width: 300px;
+  }
+  
+  #services-section img {
+    height: 100px;
+    margin-bottom: 20px;
+  }
+  
+  #services-section h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  #services-section p {
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+  
+  /* Footer styles */
+  footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+ 
+  .sign-in{
+    margin-right: 10px;
+    margin-left: 450px;
+  }
+  .sign-up{
+    background-color: rgb(225, 22, 22);
+        color:black;
+        border-radius: 50px;
+        padding: 5px;
+  }
+
+
+    
+    nav a.sign-up:hover, nav a.sign-in:hover {
+    background-color: #fff;
+    border-radius: 50px;
+    color: #ff3b3f;
+    }
+    
+    nav a.sign-in {
+    margin-left: 10px;
+    }
+    .logo{width: 100px;
+margin-top: -50px;    
+margin-bottom   : -67px;    
+
+}
+  
+    nav a:hover {
+        background-color: #ffffff2b;
+      
+        border-radius: 50px;
+        padding: 10px;
+    }
+    
+     nav a.sign-up:hover {
+        background-color: #fff;
+        color: #000;
+    }
+    i{
+           background-color: #ff3b3f;
+    }
+    .container {
+        background-color: black;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+      }
+      
+      .image {
+        width: 200px;
+        margin-right: 20px;
+      }
+      
+      .content {
+        color: white;
+
+      }
+      p {
+        font-family: 'Open Sans', sans-serif;
+      }
+      .containercontact {
+        width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        background-color: #ffffffd5;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a shadow */
+      }
+      
+      .labelh {
+        text-align: center;
+        margin-bottom: 20px;
+        color: black;
+      }
+      
+  .contactform {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .labeltext {
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: black;
+      }
+   
+      
+      .inputtext {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+      }
+      
+      textarea {
+        height: 100px;
+      }
+      
+      .submitbtn {
+        background-color: #ff0000;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+      border-radius:50px;
+        cursor: pointer;
+      }
+      
+    .submitbtn:hover {
+        background-color: #ff0000c1;
+      }
+   
+      
