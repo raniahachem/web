@@ -1,30 +1,36 @@
-<!DOCTYPE html>
+{% extends 'baseback.html.twig' %}
 
-<title>Message</title>
+{% block title %}Message{% endblock %}
 
 {% block body %}
-    <h1>Message</h1>
+<style>
+        h1 {
+            color: black;
+            font-size: 24px;
+        }
+    </style>
+<div class="container" style="background-color: white; height: 800px;">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ message.id }}</td>
-            </tr>
-            <tr>
-                <th>Contenu</th>
-                <td>{{ message.contenu }}</td>
-            </tr>
-            <tr>
-                <th>Date_message</th>
-                <td>{{ message.dateMessage ? message.dateMessage|date('Y-m-d') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <h1>Détail de message</h1>
 
-    <a href="{{ path('app_message_index') }}">back to list</a>
-
-    <a href="{{ path('app_message_edit', {'id': message.id}) }}">edit</a>
-
-    {{ include('message/_delete_form.html.twig') }}
+    <table class="table table-bordered table-striped table-hover" style="width: 80%;">
+    <tbody>
+        <tr>
+            <th style="color: #FF7F50;">Id de message envoyé</th>
+            <td>{{ message.id }}</td>
+        </tr>
+        <tr>
+            <th style="color: #FF7F50;">Contenu</th>
+            <td>{{ message.contenu }}</td>
+        </tr>
+        <tr>
+            <th style="color: #FF7F50;">Date_message</th>
+            <td>{{ message.dateMessage ? message.dateMessage|date('Y-m-d') : '' }}</td>
+        </tr>
+    </tbody>
+</table>
+   {{ include('message/_delete_form.html.twig') }}
+<a href="{{ path('app_message_edit', {'id': message.id}) }}" class="btn btn-danger btn-primary" style="margin-right: 10px;">Modifier</a>
+<a href="{{ path('app_message_index') }}" class="btn btn-danger btn-secondary" style="margin-right: 10px;">Retour à la liste</a>
+</div>
 {% endblock %}

@@ -12,13 +12,17 @@
           <h6 class="text-uppercase mb-0 text">Contenu</h6>
         </div>
         <div>
-          <span class="text">{{ message.contenu }}</span>
+          <span class="text" style="color: #FF7F50;">{{ message.contenu }}</span>
         </div>
+        <div class="pt-3" style="color: #FF7F50;">
+  Cordialement, <br>
+  L'équipe du service client.
+</div>
         <div class="d-flex justify-content-between border-bottom py-2">
           <h6 class="text-uppercase mb-0 text">Date et heure</h6>
         </div>
         <div>
-          <span class="text-uppercase">{{ message.dateMessage ? message.dateMessage|date('d/m/Y H:i') : '' }}</span>
+          <span class="text-uppercase" style="color: #FF7F50;">{{ message.dateMessage ? message.dateMessage|date('d/m/Y H:i') : '' }}</span>
         </div>
       </div>
     </div>

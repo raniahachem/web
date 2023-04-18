@@ -9,6 +9,7 @@ use DateTimeInterface;
 use Symfony\Component\Validator\Constraints\GreaterThan;
 use Symfony\Component\Validator\Constraints\LessThan;
 
+
 #[ORM\Entity(repositoryClass: MessageRepository::class)]
 class Message
 {
@@ -30,6 +31,7 @@ private ?DateTimeInterface $date_message = null;
     private ?Reclamation $id_rec = null;
 
     #[ORM\ManyToOne(inversedBy: 'messages')]
+    #[Assert\NotBlank(message:"Admin doit etre selectionné")]
     private ?Admin $id_admin = null;
 
     
@@ -99,6 +101,7 @@ public function setDateMessage(DateTimeInterface $date_message): self
     public function __construct()
 {
     $this->date_message = new \DateTimeImmutable();
+
 }
 
 
@@ -111,4 +114,21 @@ public function setDateMessage(DateTimeInterface $date_message): self
         return $this->id_rec->getId();
     }
     
+
+    /*{% if reclamation.messages|length > 0 %}
+                {% set last_message = reclamation.messages|sort((a, b) => b.DateMessage<=> a.DateMessage)|first %}
+                <button class="btn btn-success" onclick="window.location.href='{{ path('app_message_showpourclient', {'id': last_message.id}) }}'">Afficher la réponse</button>
+            {% else %}
+                Pas encore de réponse
+            {% endif %}*/
+
+            
+            /*{% if reclamation.messages|length > 0 %}
+                {% for message in reclamation.messages|sort((a, b) => a.DateMessage<=>b.DateMessage) %}
+                    <button class="btn btn-success" onclick="window.location.href='{{ path('app_message_showpourclient', {'id': message.id}) }}'">{{ message.DateMessage|date('d/m/Y H:i:s') }} - Afficher la réponse</button><br>
+                {% endfor %}
+            {% else %}
+                Pas encore de réponse
+            {% endif %}*/
+        
 }

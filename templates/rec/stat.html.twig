@@ -1,0 +1,33 @@
+{% extends 'baseback.html.twig' %}
+{% block title %}Sponsor {% endblock %}
+
+{% block body %}
+
+
+
+
+   <!-- Content Row -->
+
+                <div class="row">
+
+                    <!-- Emna CHART -->
+                    <div class="col-xl-6 col-lg-7">
+                      <div>Sponsor Type </div>
+                        <div id="EmnaChart1"></div>
+
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script type="text/javascript">
+                            {{ gc_draw(EmnaChart1, 'EmnaChart1') }}
+                        </script>
+
+                        </script>
+                    </div>
+
+                      </div>
+
+                <!-- Content Row -->
+
+
+
+
+{% endblock %}

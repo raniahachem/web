@@ -6,35 +6,44 @@
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Les réclamations</h6>
-                        <a href="">Show All</a>
+                        <a href="">Rafraichir</a>
                     </div>
                     <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0" style="width: 90%; border-color: white;">
                             <thead>
                                 <tr class="text-white">
                                     
-                                    <th scope="col">Id</th>
-                                    <th scope="col">Type</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Client</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col"style="color: #FF7F50;">Id</th>
+                                    <th scope="col"style="color: #FF7F50;">Type</th>
+                                    <th scope="col"style="color: #FF7F50;">Date</th>
+                                    <th scope="col"style="color: #FF7F50;">Description</th>
+                                    <th scope="col"style="color: #FF7F50;">Client</th>
+                                    <th scope="col"style="color: #FF7F50;">Action</th>
+                                    <th scope="col"style="color: #FF7F50;">État</th>
                                 </tr>
                             </thead>
                             <tbody>
                             {% for reclamation in reclamations %}
                  <tr>
-    <td>{{ reclamation.id }}</td>
-    <td>{{ reclamation.type }}</td>
-    <td>{{ reclamation.dateR ? reclamation.dateR|date('Y-m-d') : '' }}</td>
-    <td>{{ reclamation.description }}</td>
-    <td>{{ reclamation.getClientName() }}</td>
+    <td style="color: white">{{ reclamation.id }}</td>
+    <td style="color: white">{{ reclamation.type }}</td>
+    <td style="color: white">{{ reclamation.dateR ? reclamation.dateR|date('Y-m-d') : '' }}</td>
+    <td style="color: white">{{ reclamation.description }}</td>
+    <td style="color: white">{{ reclamation.getClientName() }}</td>
     <td>
          <div style="display: flex; flex-direction: column;">
-                                        <a href="{{ path('app_rec_show', {'id': reclamation.id}) }}" style="background-color: #ffffff; color: #000000; padding: 10px 20px; border: 2px solid #000000; text-decoration: none; margin-bottom: 10px; border-radius: 5px;">Afficher</a>
-                                        <a href="{{ path('app_message_new', {'id': reclamation.id}) }}" style="background-color: #ffffff; color: #000000; padding: 10px 20px; border: 2px solid #000000; text-decoration: none; border-radius: 5px;">Répondre</a>
+                                        <a href="{{ path('app_rec_show', {'id': reclamation.id}) }}" style="background-color: #FF7F50; color: white; padding: 10px 20px; border: 2px solid #000000; text-decoration: none; margin-bottom: 10px; border-radius: 5px;">Afficher</a>
+                                        <a href="{{ path('app_message_new', {'id': reclamation.id}) }}" style="background-color: #FF7F50; color: white; padding: 10px 20px; border: 2px solid #000000; text-decoration: none; border-radius: 5px;">Répondre</a>
                                     </div>
     </td>
+   <td>
+    {% if reclamation.messages|length > 0 %}
+        <span style="color: #90EE90;">Déjà répondu</span>
+    {% else %}
+        <span style="color: #FF7F7F;">Pas encore de réponse</span>
+    {% endif %}
+</td>
+
 </tr>
                                 {% else %}
                             <tr>
@@ -53,6 +62,7 @@
                     </div>
                 </div>
             </div>
+            
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
@@ -65,4 +75,10 @@
     });
 </script>
 {% endblock %}
+
+
+
+
+
+
 

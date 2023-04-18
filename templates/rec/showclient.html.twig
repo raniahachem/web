@@ -74,6 +74,7 @@
 </table>
 
 
-<a href="{{ path('app_rec_new', {'clientId': 3}) }}" style="background-color: white; color: black; border-radius: 5px; padding: 10px;">Retour</a>
- {{ include('rec/deletefront.html.twig') }}
+<a href="{{ path('app_rec_new', {'clientId': 3}) }}" style="background-color: white; color: black; border-radius: 5px; padding: 10px;">Créer une autre</a>
+<a href="{{ path('app_rec_edit', {'id': reclamation.id}) }}" style="background-color: red; color: white; border-radius: 10px; padding: 10px 20px; text-decoration: none;">modifier</a>
+{{ include('rec/deletefront.html.twig') }}
 {% endblock %}

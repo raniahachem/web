@@ -28,10 +28,14 @@
                         <td>{{ reclamation.dateR ? reclamation.dateR|date('Y-m-d') : '' }}</td>
                         <td>{{ reclamation.description }}</td>
                         <td>
-                            {% if reclamation.messages|length > 0 %}
- <button class="btn btn-success" onclick="window.location.href='{{ path('app_message_showpourclient', {'id': reclamation.messages[0].id}) }}'">Afficher la réponse</button>                            {% else %}
-                                Pas encore de réponse
-                            {% endif %}
+                            
+            {% if reclamation.messages|length > 0 %}
+                {% set last_message = reclamation.messages|sort((a, b) => b.DateMessage<=> a.DateMessage)|first %}
+                <button class="btn btn-success" onclick="window.location.href='{{ path('app_message_showpourclient', {'id': last_message.id}) }}'">Afficher la réponse</button>
+            {% else %}
+                Pas encore de réponse
+            {% endif %}
+        
                     <td>
 <a href="{{ path('app_rec_showclient', {'id': reclamation.id}) }}" style="background-color: red; color: white; border-radius: 10px; padding: 10px 20px; text-decoration: none;">afficher</a>
 <a href="{{ path('app_rec_edit', {'id': reclamation.id}) }}" style="background-color: red; color: white; border-radius: 10px; padding: 10px 20px; text-decoration: none;">modifier</a>
@@ -45,12 +49,6 @@
                 {% endfor %}
             </tbody>
         </table>
-        <li>
-            <ul>
-                <li><a href="{{ path('order_By_Type')}}">Trie par Type</a></li>
-                <li><a href="{{ path('order_By_Date')}}">Trie par Date</a></li>              
-            </ul>
-        </li>
     </div>
 </div>
 </div>

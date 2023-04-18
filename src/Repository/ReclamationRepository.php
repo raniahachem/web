@@ -40,6 +40,16 @@ class ReclamationRepository extends ServiceEntityRepository
     }
 
 
+
+    public function findReclamationsByType($type)
+{
+    return $this->createQueryBuilder('r')
+        ->select('count(r)')
+        ->andWhere('r.type = :type')
+        ->setParameter('type', $type)
+        ->getQuery()
+        ->getSingleScalarResult();
+}
    
 //    /**
 //     * @return Reclamation[] Returns an array of Reclamation objects

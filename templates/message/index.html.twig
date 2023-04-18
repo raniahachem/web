@@ -1,17 +1,24 @@
 {% extends 'baseback.html.twig' %}
 {% block title %}Reclamation{% endblock %}
 {% block body %}
+<style>
+        h1 {
+            color: black;
+            font-size: 24px;
+        }
+    </style>
+<div class="container" style="background-color: white; height: 900px;">
     <h1>Messages envoyés</h1>
 
-    <table class="table">
+    <table class="table table-bordered table-striped table-hover" style="width: 80%;">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Contenu</th>
-                <th>Date_message</th>
-                
+                <th>Date_message</th>             
                 <th>Admin</th>
-                <th>actions</th>
+                <th>Id de Reclamation</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +29,7 @@
                 <td>{{ message.dateMessage ? message.dateMessage|date('Y-m-d H:i:s') : '' }}</td>
                 
                 <td>{{ message.getAdminName() }}</td>
+                <td>{{ message.getRec() }}</td>
                 <td>
                     <a href="{{ path('app_message_show', {'id': message.id}) }}">show</a>
                     <a href="{{ path('app_message_edit', {'id': message.id}) }}">edit</a>
@@ -34,5 +42,6 @@
         {% endfor %}
         </tbody>
     </table>
-    <a href="{{ path('app_rec_index') }}">back to list</a>
+    <a href="{{ path('app_rec_index') }}">voir les réclamations</a>
+    </div>
 {% endblock %}

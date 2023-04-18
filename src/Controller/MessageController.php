@@ -60,6 +60,8 @@ public function new(Request $request, MessageRepository $messageRepository, Recl
         ]);
     }
 
+  
+
     #[Route('/{id}/edit', name: 'app_message_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Message $message, MessageRepository $messageRepository): Response
     {
