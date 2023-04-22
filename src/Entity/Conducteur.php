@@ -84,5 +84,118 @@ class Conducteur
      */
     private $imageConducteur;
 
+    public function getIdConducteur(): ?int
+    {
+        return $this->idConducteur;
+    }
+
+    public function getCinConducteur(): ?int
+    {
+        return $this->cinConducteur;
+    }
+
+    public function setCinConducteur(int $cinConducteur): self
+    {
+        $this->cinConducteur = $cinConducteur;
+
+        return $this;
+    }
+
+    public function getNomConducteur(): ?string
+    {
+        return $this->nomConducteur;
+    }
+
+    public function setNomConducteur(string $nomConducteur): self
+    {
+        $this->nomConducteur = $nomConducteur;
+
+        return $this;
+    }
+
+    public function getPrenomConducteur(): ?string
+    {
+        return $this->prenomConducteur;
+    }
+
+    public function setPrenomConducteur(string $prenomConducteur): self
+    {
+        $this->prenomConducteur = $prenomConducteur;
+
+        return $this;
+    }
+
+    public function getVilleConducteur(): ?string
+    {
+        return $this->villeConducteur;
+    }
+
+    public function setVilleConducteur(string $villeConducteur): self
+    {
+        $this->villeConducteur = $villeConducteur;
+
+        return $this;
+    }
+
+    public function getTelephoneConducteur(): ?int
+    {
+        return $this->telephoneConducteur;
+    }
+
+    public function setTelephoneConducteur(int $telephoneConducteur): self
+    {
+        $this->telephoneConducteur = $telephoneConducteur;
+
+        return $this;
+    }
+
+    public function getEmailConducteur(): ?string
+    {
+        return $this->emailConducteur;
+    }
+
+    public function setEmailConducteur(string $emailConducteur): self
+    {
+        $this->emailConducteur = $emailConducteur;
+
+        return $this;
+    }
+
+    public function getMdpConducteur(): ?string
+    {
+        return $this->mdpConducteur;
+    }
+
+    public function setMdpConducteur(string $mdpConducteur): self
+    {
+        $this->mdpConducteur = $mdpConducteur;
+
+        return $this;
+    }
+
+    public function getTypeDePermis(): ?string
+    {
+        return $this->typeDePermis;
+    }
+
+    public function setTypeDePermis(?string $typeDePermis): self
+    {
+        $this->typeDePermis = $typeDePermis;
+
+        return $this;
+    }
+
+    public function getImageConducteur(): ?string
+    {
+        return $this->imageConducteur;
+    }
+
+    public function setImageConducteur(?string $imageConducteur): self
+    {
+        $this->imageConducteur = $imageConducteur;
+
+        return $this;
+    }
+
 
 }

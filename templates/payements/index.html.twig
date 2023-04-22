@@ -1,0 +1,53 @@
+{% extends 'baseback.html.twig' %}
+{% block body %}
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">payement</h6>
+                         <a href="{{ path('pay_new') }}"> <button class="btn btn-primary" type="button">Ajouter</button></a>
+ </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                              <tr>
+                                <th>id</th>
+                                <th>id client</th>
+                                <th>mode paiment</th>
+                                <th>prix</th>
+                                <th>date</th>
+                                <th>actions</th>
+                              </tr>
+                            
+                              {% for a in ab %}
+                                <tr>
+                                  <td>{{ a.paymentid }}</td>
+                                  <td>{{ a.clientid }}</td>
+                                  <td>{{ a.modepayment }}</td>
+                                  <td>{{ a.prixcourse }}</td>
+                                    <td>
+                                    
+                              {{a.paymentdate ? a.paymentdate|date('Y-m-d') : '' }}
+                                  </td>
+                                  <td style='display:flex'>                    
+                                    <a href="{{ path('payment_edit',{'id': a.paymentid}) }}"><button class="btn btn-primary" type="button">Modifier</button></a>
+                                    <a href="{{ path('pay_delete',{'id': a.paymentid}) }}">
+                                      <button class="btn btn-danger" type="button">Supprimer</button>
+                                    </a>
+                                  </td>
+                                </tr>
+                              {% else %}
+                                <tr>
+                                    <td colspan="4">no records found</td>
+                                </tr>
+                              {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% endblock  %}
+
+
+
+
+
+
+              

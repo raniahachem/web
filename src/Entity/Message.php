@@ -4,33 +4,79 @@ namespace App\Entity;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\MessageRepository;
-#[ORM\Entity(repositoryClass: MessageRepository::class)]
+
+/**
+ * Message
+ *
+ * @ORM\Table(name="message", indexes={@ORM\Index(name="id_client", columns={"id_client"}), @ORM\Index(name="id_conducteur", columns={"id_conducteur"})})
+ * @ORM\Entity
+ */
 class Message
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $idMessage = null;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_message", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idMessage;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_conducteur", type="integer", nullable=false)
+     */
+    private $idConducteur;
 
-    #[ORM\Column(length: 255)]
-    private ?string $contenu = null;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_client", type="integer", nullable=false)
+     */
+    private $idClient;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, options: ["default" => "CURRENT_TIMESTAMP"])]
-    private ?\DateTimeInterface $dateMessage;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contenu", type="string", length=255, nullable=false)
+     */
+    private $contenu;
 
-
-    #[ORM\ManyToOne(inversedBy: 'messages')]
-    private ?Reclamation $idRec = null;
-
- 
-    #[ORM\ManyToOne(inversedBy: 'messages')]
-    private ?Admin $idAdmin = null;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_message", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
+     */
+    private $dateMessage = 'CURRENT_TIMESTAMP';
 
     public function getIdMessage(): ?int
     {
         return $this->idMessage;
+    }
+
+    public function getIdConducteur(): ?int
+    {
+        return $this->idConducteur;
+    }
+
+    public function setIdConducteur(int $idConducteur): self
+    {
+        $this->idConducteur = $idConducteur;
+
+        return $this;
+    }
+
+    public function getIdClient(): ?int
+    {
+        return $this->idClient;
+    }
+
+    public function setIdClient(int $idClient): self
+    {
+        $this->idClient = $idClient;
+
+        return $this;
     }
 
     public function getContenu(): ?string
@@ -53,30 +99,6 @@ class Message
     public function setDateMessage(\DateTimeInterface $dateMessage): self
     {
         $this->dateMessage = $dateMessage;
-
-        return $this;
-    }
-
-    public function getIdRec(): ?Reclamation
-    {
-        return $this->idRec;
-    }
-
-    public function setIdRec(?Reclamation $idRec): self
-    {
-        $this->idRec = $idRec;
-
-        return $this;
-    }
-
-    public function getIdAdmin(): ?Admin
-    {
-        return $this->idAdmin;
-    }
-
-    public function setIdAdmin(?Admin $idAdmin): self
-    {
-        $this->idAdmin = $idAdmin;
 
         return $this;
     }

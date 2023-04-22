@@ -1,0 +1,48 @@
+{% extends 'baseback.html.twig' %}
+{% block body %}
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">abonnements</h6>
+                        <a href="{{ path('ab_new') }}"> <button class="btn btn-primary" type="button">Ajouter</button></a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                              <tr>
+                                <th>id</th>
+                            <th>type</th>
+                            <th>prix</th>
+                            <th>mode paiement</th>
+                            <th>actions</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for a in ab %}
+                          <tr>
+                            <td>{{ a.idab }}</td>
+                            <td>{{ a.typeab }}</td>
+                            <td>{{ a.prixab }}</td>
+                            <td>{{ a.modepaiementab }}</td>
+                            <td style='display:flex'>                    
+                           <a href="{{ path('ab_edit',{'id': a.idab}) }}"> <button class="btn btn-primary" type="button">Modifier</button></a>
+
+                           <a href="{{ path('ab_delete',{'id': a.idab}) }}">
+                    <button class="btn btn-danger" type="button">Supprimer</button></a>
+
+</td>
+
+                           
+                          </tr>
+          
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+{% endblock %} 

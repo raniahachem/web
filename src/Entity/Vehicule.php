@@ -63,5 +63,82 @@ class Vehicule
      */
     private $imagev;
 
+    public function getImmatriculation(): ?string
+    {
+        return $this->immatriculation;
+    }
+
+    public function getTypeDuVehicule(): ?string
+    {
+        return $this->typeDuVehicule;
+    }
+
+    public function setTypeDuVehicule(string $typeDuVehicule): self
+    {
+        $this->typeDuVehicule = $typeDuVehicule;
+
+        return $this;
+    }
+
+    public function getMarque(): ?string
+    {
+        return $this->marque;
+    }
+
+    public function setMarque(string $marque): self
+    {
+        $this->marque = $marque;
+
+        return $this;
+    }
+
+    public function getCinConducteur(): ?int
+    {
+        return $this->cinConducteur;
+    }
+
+    public function setCinConducteur(int $cinConducteur): self
+    {
+        $this->cinConducteur = $cinConducteur;
+
+        return $this;
+    }
+
+    public function getEtat(): ?int
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(int $etat): self
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    public function getKilometrage(): ?int
+    {
+        return $this->kilometrage;
+    }
+
+    public function setKilometrage(int $kilometrage): self
+    {
+        $this->kilometrage = $kilometrage;
+
+        return $this;
+    }
+
+    public function getImagev(): ?string
+    {
+        return $this->imagev;
+    }
+
+    public function setImagev(string $imagev): self
+    {
+        $this->imagev = $imagev;
+
+        return $this;
+    }
+
 
 }

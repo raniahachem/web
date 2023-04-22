@@ -1,0 +1,119 @@
+{% extends 'basefront.html.twig' %}
+{% block body %}
+<a href="{{path('pay_create')}}">Create new payment</a>
+
+
+
+<!-- Working Hours Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+                                    <a href="{{ path('pay_create') }}"> <button class="btn btn-primary" type="button">Ajouter</button></a>
+
+            <div class="row g-0">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="h-100">
+                        <img class="img-fluid h-100" src="img/open.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="bg-secondary h-100 d-flex flex-column justify-content-center p-5">
+                        <p class="d-inline-flex bg-dark text-primary py-1 px-4 me-auto">Payements </p>
+                        <div>
+{% for c in ab %}                           
+                    <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">id de payement </h6>
+                                <span class="text-uppercase">{{c.paymentid}}</span>
+                            </div>
+                            <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">id de client  </h6>
+                                <span class="text-uppercase">{{c.clientid}}</span>
+                            </div>
+                            <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">mode de payement </h6>
+                                <span class="text-uppercase">{{c.modepayment}}</span>
+                            </div>
+                            <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">prix</h6>
+                                <span class="text-uppercase">{{c.prixcourse}}</span>
+                            </div>
+                            <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">actions </h6>
+                                <span class="text-uppercase">***********************</span>
+                            </div>
+
+                            <div class="d-flex justify-content-between border-bottom py-2">
+
+
+                            <a href="{{ path('payment_update',{'id': c.paymentid}) }}"><button class="btn btn-primary" type="button">Modifier</button></a>
+                            
+                            <a href="{{ path('pay_delete',{'id':c.paymentid}) }}"><button class="btn btn-primary" type="button">Supprimer</button></a>
+                             </div>
+                                                         {% endfor %}
+ 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Working Hours End -->
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="d-none">
+<table border="1">
+<thead class="thead-light">
+                                <tr>
+                                    <th>id payment</th>
+                                    <th>id client </th>
+                                    <th>mode payment</th>
+                                    <th>prixcourse</th>
+                                </tr>
+
+                            </thead>
+{% for c in ab %}
+                            <tr>
+                                
+                                <td>{{c.paymentid}}</td>
+                                <td>{{c.clientid}}</td>
+                                <td>{{c.modepayment}}</td>
+                                <td>{{c.prixcourse}}</td>
+								
+
+                                
+                                
+                                <td>
+                                    <ul>
+                                        <li style="display : flex;"><i class="fa-solid fa-trash"
+                                                style="margin-right:5px;margin-top:4px;"></i><a
+                                                href="{{path('pay_delete',{'id':c.paymentid})}}">Delete</a> </li>
+                                        <li style="display:flex;"><i class="fa-solid fa-pen-to-square"
+                                                style="margin-right:5px;margin-top:3px;"></i><a
+                                                href="{{path('payment_update',{'id':c.paymentid})}}">Update</a></li>
+                                            
+                                        
+                                    </ul>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </table>
+                            </div>
+{% endblock %}

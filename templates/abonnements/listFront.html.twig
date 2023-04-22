@@ -1,0 +1,117 @@
+{% extends 'basefront.html.twig' %}
+{% block body %}
+<a href="{{path('ab_create')}}">Create new abonnement</a>
+
+
+
+
+
+<!-- Working Hours Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+                                    <a href="{{ path('ab_create') }}"> <button class="btn btn-primary" type="button">Ajouter</button></a>
+
+            <div class="row g-0">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="h-100">
+                        <img class="img-fluid h-100" src="img/open.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="bg-secondary h-100 d-flex flex-column justify-content-center p-5">
+                        <p class="d-inline-flex bg-dark text-primary py-1 px-4 me-auto">Abonnements </p>
+                        <div>
+{% for c in ab %}
+              <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">id abonnement </h6>
+                                <span class="text-uppercase">{{c.idab}}</span>
+                            </div>
+                            <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">type   </h6>
+                                <span class="text-uppercase">{{c.typeab}}</span>
+                            </div>
+                            <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">prix </h6>
+                                <span class="text-uppercase">{{c.prixab}}</span>
+                            </div>
+                            <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">mode de payement</h6>
+                                <span class="text-uppercase">{{c.modepaiementab}}</span>
+                            </div>
+                           
+
+                            <div class="d-flex justify-content-between border-bottom py-2">
+
+
+                            <a href="{{ path('ab_update',{'id': c.idab}) }}"><button class="btn btn-primary" type="button">Modifier</button></a>
+                            
+                            <a href="{{ path('ab_delete',{'id': c.idab}) }}"><button class="btn btn-primary" type="button">Supprimer</button></a>
+                             </div>
+                                                         {% endfor %}
+ 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Working Hours End -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table border="1" class='d-none' >
+<thead class="thead-light">
+                        <tr>
+                                    <th>idab</th>
+                                    <th>typeab</th>
+                                    <th>prixab</th>
+                                    <th>modepaiementab</th>
+                                    <th>Options</th>
+                                </tr>
+
+                            </thead>
+{% for c in ab %}
+                            <tr>
+                                
+                                <td>{{c.idab}}</td>
+                                <td>{{c.typeab}}</td>
+                                <td>{{c.prixab}}</td>
+                                <td>{{c.modepaiementab}}</td>
+                                
+                                
+                                <td>
+                                    <ul>
+                                        <li style="display : flex;"><i class="fa-solid fa-trash"
+                                                style="margin-right:5px;margin-top:4px;"></i><a
+                                                href="{{path('ab_delete',{'id':c.idab})}}">Delete</a> </li>
+                                        <li style="display:flex;"><i class="fa-solid fa-pen-to-square"
+                                                style="margin-right:5px;margin-top:3px;"></i><a
+                                                href="{{path('ab_update',{'id':c.idab})}}">Update</a></li>
+                                            
+                                        
+                                    </ul>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </table>
+                            {% endblock %}
