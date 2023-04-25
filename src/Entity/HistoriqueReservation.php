@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * HistoriqueReservation
  *
- * @ORM\Table(name="historique_reservation", indexes={@ORM\Index(name="id_client", columns={"id_client"}), @ORM\Index(name="id_conducteur", columns={"id_conducteur"})})
+ * @ORM\Table(name="historique_reservation")
  * @ORM\Entity
  */
 class HistoriqueReservation
@@ -27,6 +28,13 @@ class HistoriqueReservation
      * @ORM\Column(name="id_reservation", type="integer", nullable=false)
      */
     private $idReservation;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="id_conducteur", type="integer", nullable=true)
+     */
+    private $idConducteur;
 
     /**
      * @var \DateTime|null
@@ -78,24 +86,136 @@ class HistoriqueReservation
     private $statusReservation;
 
     /**
-     * @var \Conducteur
+     * @var int|null
      *
-     * @ORM\ManyToOne(targetEntity="Conducteur")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_conducteur", referencedColumnName="id_conducteur")
-     * })
-     */
-    private $idConducteur;
-
-    /**
-     * @var \Client
-     *
-     * @ORM\ManyToOne(targetEntity="Client")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_client", referencedColumnName="id_client")
-     * })
+     * @ORM\Column(name="id_client", type="integer", nullable=true)
      */
     private $idClient;
+
+    public function getIdHistoriqueReservation(): ?int
+    {
+        return $this->idHistoriqueReservation;
+    }
+
+    public function getIdReservation(): ?int
+    {
+        return $this->idReservation;
+    }
+
+    public function setIdReservation(int $idReservation): self
+    {
+        $this->idReservation = $idReservation;
+
+        return $this;
+    }
+
+    public function getIdConducteur(): ?int
+    {
+        return $this->idConducteur;
+    }
+
+    public function setIdConducteur(?int $idConducteur): self
+    {
+        $this->idConducteur = $idConducteur;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(?\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getDateDepartReelle(): ?\DateTimeInterface
+    {
+        return $this->dateDepartReelle;
+    }
+
+    public function setDateDepartReelle(?\DateTimeInterface $dateDepartReelle): self
+    {
+        $this->dateDepartReelle = $dateDepartReelle;
+
+        return $this;
+    }
+
+    public function getDateArriveReelle(): ?\DateTimeInterface
+    {
+        return $this->dateArriveReelle;
+    }
+
+    public function setDateArriveReelle(?\DateTimeInterface $dateArriveReelle): self
+    {
+        $this->dateArriveReelle = $dateArriveReelle;
+
+        return $this;
+    }
+
+    public function getLieuDepart(): ?string
+    {
+        return $this->lieuDepart;
+    }
+
+    public function setLieuDepart(?string $lieuDepart): self
+    {
+        $this->lieuDepart = $lieuDepart;
+
+        return $this;
+    }
+
+    public function getLieuDestination(): ?string
+    {
+        return $this->lieuDestination;
+    }
+
+    public function setLieuDestination(?string $lieuDestination): self
+    {
+        $this->lieuDestination = $lieuDestination;
+
+        return $this;
+    }
+
+    public function getAvisClient(): ?string
+    {
+        return $this->avisClient;
+    }
+
+    public function setAvisClient(?string $avisClient): self
+    {
+        $this->avisClient = $avisClient;
+
+        return $this;
+    }
+
+    public function getStatusReservation(): ?string
+    {
+        return $this->statusReservation;
+    }
+
+    public function setStatusReservation(?string $statusReservation): self
+    {
+        $this->statusReservation = $statusReservation;
+
+        return $this;
+    }
+
+    public function getIdClient(): ?int
+    {
+        return $this->idClient;
+    }
+
+    public function setIdClient(?int $idClient): self
+    {
+        $this->idClient = $idClient;
+
+        return $this;
+    }
 
 
 }

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offre index{% endblock %}
+
+{% block body %}
+
+    <h1>Offre index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdOffre</th>
+                <th>IdConducteur</th>
+                <th>Destination</th>
+                 
+                <th>PtDepart</th>
+                <th>Prix</th>
+                <th>TypeVehicule</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for offre in offres %}
+            <tr>
+                <td>{{ offre.idOffre }}</td>
+                <td>{{ offre.idConducteur }}</td>
+                <td>{{ offre.destination }}</td>
+                <td>{{ offre.ptDepart }}</td>
+                <td>{{ offre.prix }}</td>
+                <td>{{ offre.typeVehicule }}</td>
+                <td>
+                    <a href="{{ path('app_offre_show_admin', {'idOffre': offre.idOffre}) }}">show</a>
+                     {{ include('offre/_delete_form.html.twig') }}                 </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+     
+     
+{% endblock %}

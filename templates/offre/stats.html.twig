@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Afficher le contenu d'un fichier PHP</title>
+</head>
+<body>
+    <h1>Afficher le contenu d'un fichier PHP</h1>
+    <button id="btn-afficher">Afficher le contenu</button>
+    <div id="contenu"></div>
+
+    <script>
+        const btnAfficher = document.getElementById("btn-afficher");
+        const contenuDiv = document.getElementById("contenu");
+
+        btnAfficher.addEventListener("click", () => {
+            fetch('{{ path('app_offre_stat') }}')
+                .then(response => response.text())
+                .then(data => {
+                    contenuDiv.innerHTML = data;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        });
+    </script>
+</body>
+</html>
+
+
+ 
+ 
