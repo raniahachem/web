@@ -12,7 +12,7 @@
         ]
     },
     "doctrine/doctrine-bundle": {
-        "version": "2.9",
+        "version": "2.8",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
@@ -37,6 +37,9 @@
             "./config/packages/doctrine_migrations.yaml",
             "./migrations/.gitignore"
         ]
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.9.0"
     },
     "phpunit/phpunit": {
         "version": "9.6",
@@ -118,6 +121,15 @@
             "./src/Controller/.gitignore",
             "./src/Kernel.php"
         ]
+    },
+    "symfony/google-mailer": {
+        "version": "5.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "4.4",
+            "ref": "f8fd4ddb9b477510f8f4bce2b9c054ab428c0120"
+        }
     },
     "symfony/mailer": {
         "version": "5.4",
@@ -215,6 +227,9 @@
         "files": [
             "./config/packages/security.yaml"
         ]
+    },
+    "symfony/swiftmailer-bundle": {
+        "version": "v2.3.8"
     },
     "symfony/translation": {
         "version": "5.4",

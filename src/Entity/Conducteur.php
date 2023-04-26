@@ -1,88 +1,162 @@
 <?php
 
 namespace App\Entity;
-
+use App\Repository\AvisRepository;
+use App\Repository\ConducteurRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Conducteur
- *
- * @ORM\Table(name="conducteur")
- * @ORM\Entity
- */
+#[ORM\Entity(repositoryClass: ConducteurRepository::class)]
 class Conducteur
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id_conducteur", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idConducteur;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id_conducteur = null;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="cin_conducteur", type="integer", nullable=false)
-     */
-    private $cinConducteur;
+    #[ORM\Column]
+    private ?int $cin_conducteur = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nom_conducteur", type="string", length=50, nullable=false)
-     */
-    private $nomConducteur;
+    #[ORM\Column(length: 255)]
+    private ?string $nom_conducteur = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="prenom_conducteur", type="string", length=50, nullable=false)
-     */
-    private $prenomConducteur;
+    #[ORM\Column(length: 255)]
+    private ?string $prenom_conducteur = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="ville_conducteur", type="string", length=50, nullable=false)
-     */
-    private $villeConducteur;
+    #[ORM\Column(length: 255)]
+    private ?string $ville_conducteur = null;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="telephone_conducteur", type="integer", nullable=false)
-     */
-    private $telephoneConducteur;
+    #[ORM\Column]
+    private ?int $telephone_conducteur = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email_conducteur", type="string", length=200, nullable=false)
-     */
-    private $emailConducteur;
+    #[ORM\Column(length: 255)]
+    private ?string $email_conducteur = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mdp_conducteur", type="string", length=50, nullable=false)
-     */
-    private $mdpConducteur;
+    #[ORM\Column(length: 255)]
+    private ?string $mdp_conducteur = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="type_de_permis", type="string", length=11, nullable=true)
-     */
-    private $typeDePermis;
+    #[ORM\Column(length: 255)]
+    private ?string $type_de_permis = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="image_conducteur", type="string", length=255, nullable=true)
-     */
-    private $imageConducteur;
+    #[ORM\Column(length: 255)]
+    private ?string $image_conducteur = null;
 
+    public function getIdConducteur(): ?int
+    {
+        return $this->id_conducteur;
+    }
 
+    public function setIdConducteur(int $id_conducteur): self
+    {
+        $this->id_conducteur = $id_conducteur;
+
+        return $this;
+    }
+
+    public function getCinConducteur(): ?int
+    {
+        return $this->cin_conducteur;
+    }
+
+    public function setCinConducteur(int $cin_conducteur): self
+    {
+        $this->cin_conducteur = $cin_conducteur;
+
+        return $this;
+    }
+
+    public function getNomConducteur(): ?string
+    {
+        return $this->nom_conducteur;
+    }
+
+    public function setNomConducteur(string $nom_conducteur): self
+    {
+        $this->nom_conducteur = $nom_conducteur;
+
+        return $this;
+    }
+
+    public function getPrenomConducteur(): ?string
+    {
+        return $this->prenom_conducteur;
+    }
+
+    public function setPrenomConducteur(string $prenom_conducteur): self
+    {
+        $this->prenom_conducteur = $prenom_conducteur;
+
+        return $this;
+    }
+
+    public function getVilleConducteur(): ?string
+    {
+        return $this->ville_conducteur;
+    }
+
+    public function setVilleConducteur(string $ville_conducteur): self
+    {
+        $this->ville_conducteur = $ville_conducteur;
+
+        return $this;
+    }
+
+    public function getTelephoneConducteur(): ?int
+    {
+        return $this->telephone_conducteur;
+    }
+
+    public function setTelephoneConducteur(int $telephone_conducteur): self
+    {
+        $this->telephone_conducteur = $telephone_conducteur;
+
+        return $this;
+    }
+
+    public function getEmailConducteur(): ?string
+    {
+        return $this->email_conducteur;
+    }
+
+    public function setEmailConducteur(string $email_conducteur): self
+    {
+        $this->email_conducteur = $email_conducteur;
+
+        return $this;
+    }
+
+    public function getMdpConducteur(): ?string
+    {
+        return $this->mdp_conducteur;
+    }
+
+    public function setMdpConducteur(string $mdp_conducteur): self
+    {
+        $this->mdp_conducteur = $mdp_conducteur;
+
+        return $this;
+    }
+
+    public function getTypeDePermis(): ?string
+    {
+        return $this->type_de_permis;
+    }
+
+    public function setTypeDePermis(string $type_de_permis): self
+    {
+        $this->type_de_permis = $type_de_permis;
+
+        return $this;
+    }
+
+    public function getImageConducteur(): ?string
+    {
+        return $this->image_conducteur;
+    }
+
+    public function setImageConducteur(string $image_conducteur): self
+    {
+        $this->image_conducteur = $image_conducteur;
+
+        return $this;
+    }
 }

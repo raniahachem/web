@@ -1,0 +1,24 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block body %}
+<div class="bg-secondary p-5">
+    <p class="d-inline-block bg-dark text-primary py-1 px-4">Update comment</p>
+
+
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}})}}
+        <div class="row g-3">
+            <div class="col-12">
+                <div class="form-floating">
+                    {{ form_row(form.contenu, {'attr': {'class': 'form-control bg-transparent'}}) }}
+                </div>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary w-100 py-3" type="submit">Done</button>
+            </div>
+        </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
+
+ 
+
