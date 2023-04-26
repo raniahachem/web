@@ -11,23 +11,135 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Normalizer\Normalizer;
 use Knp\Component\Pager\PaginatorInterface;
-use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 use PHPMailer\PHPMailer\PHPMailer;
+
 
 #[Route('/')]
 class RecController extends AbstractController
 {
-    #[Route('/aff', name: 'app_rec_index', methods: ['GET'])]
-    public function index(ReclamationRepository $reclamationRepository): Response
+   
+
+    /*#[Route('/stat' , name:'stat')]
+    public function stat(ReclamationRepository $repository)
     {
-        return $this->render('rec/index.html.twig', [
-            'reclamations' => $reclamationRepository->findAll(),
-        ]);
-    }
+        $newReclamationCount = $repository->findNewReclamation();
+        $reclamationTechniqueCount = $repository->findReclamationsByType('technique');
+        $reclamationServiceCount = $repository->findReclamationsByType('service');
+        $reclamationAutreCount = $repository->findReclamationsByType('autre');
+        
+        // Modification : récupérer les données à partir de la base de données
+        $reclamationCounts = [        ['Type', 'Nombre'],
+            ['Reclamations techniques', $reclamationTechniqueCount],
+            ['Reclamations de service', $reclamationServiceCount],
+            ['Autres reclamations', $reclamationAutreCount],
+        ];
+        
+        $StatChart1 = new PieChart();
+        $StatChart1->getData()->setArrayToDataTable($reclamationCounts);
+        
+        $StatChart1->getOptions()->setTitle("Statistiques des réclamations par type");
+        $StatChart1->getOptions()->setHeight(400);
+        $StatChart1->getOptions()->setIs3D(2);
+        $StatChart1->getOptions()->setWidth(550);
+        $StatChart1->getOptions()->getTitleTextStyle()->setBold(true);
+        $StatChart1->getOptions()->getTitleTextStyle()->setColor('#009900');
+        $StatChart1->getOptions()->getTitleTextStyle()->setItalic(true);
+        $StatChart1->getOptions()->getTitleTextStyle()->setFontName('Arial');
+        $StatChart1->getOptions()->getTitleTextStyle()->setFontSize(15);
+        
+        return $this->render('rec/stat.html.twig', [
+            'reclamation_counts' => $reclamationCounts, // Modification : passer les données à Twig
+            'chart' => $StatChart1, // Modification : passer l'objet PieChart à Twig
+        ]);    
+    }*/
+
+
+    #[Route('/stat', name: 'stat')]
+public function stat(ReclamationRepository $repository)
+{
+    $newReclamationCount = $repository->findNewReclamation();
+    $reclamationTechniqueCount = $repository->findReclamationsByType('technique');
+    $reclamationServiceCount = $repository->findReclamationsByType('service');
+    $reclamationAutreCount = $repository->findReclamationsByType('autre');
+
+    $reclamationCounts = [
+        ['Type', 'Nombre'],
+        ['Technique', $reclamationTechniqueCount],
+        ['Service', $reclamationServiceCount],
+        ['Autre', $reclamationAutreCount],
+    ];
+
+    return $this->render('rec/stat.html.twig', [
+        'reclamation_counts' => json_encode($reclamationCounts),
+    ]);
+}
+
+    
+    #[Route('/aff', name: 'app_rec_index')]
+    public function index(Request $request, ReclamationRepository $reclamationRepository, PaginatorInterface $paginator): Response
+{  
+    $reclamations = $reclamationRepository->createQueryBuilder('r')
+        ->orderBy('r.date_r', 'DESC')
+        ->getQuery()
+        ->getResult();
+
+    $reclamations = $paginator->paginate(
+        $reclamations,
+        $request->query->getInt('page', 1),
+        4
+    );
+
+    return $this->render('rec/index.html.twig', [
+        'reclamations' => $reclamations,
+    ]);
+}
+
+
+    #[Route('/recsansreponse', name: 'app_rec_reponse')]
+    public function getUnansweredReclamations(ReclamationRepository $reclamationRepository): Response
+{
+    $reclamations = $reclamationRepository->findunansweredRec();
+
+    return $this->render('rec/sansreponse.html.twig', [
+        'reclamations' => $reclamations
+    ]);
+}
+#[Route('/trierpardate', name: 'app_rec_trier')]
+public function trierParDate(Request $request, ReclamationRepository $reclamationRepository): Response
+{
+    $reclamations = $reclamationRepository->findBy([], ['date_r' => 'DESC']);
+
+    return $this->render('rec/index.html.twig', [
+        'reclamations' => $reclamations,
+    ]);
+}
+
+#[Route('/order_By_Type', name: 'order_By_Type', methods: ['GET'])]
+public function order_By_Type(ReclamationRepository $reclamationRepository): Response
+{
+    $reclamationByType = $reclamationRepository->orderByType();
+
+    return $this->render('rec/index.html.twig', [
+        'reclamations' => $reclamationByType,
+    ]);
+}
+
+
+
+#[Route('/order_By_Date', name: 'order_By_Date', methods: ['GET'])]
+public function order_By_Date(ReclamationRepository $reclamationRepository): Response
+{
+
+    $reclamationByDate = $reclamationRepository->order_By_Date();
+
+    return $this->render('rec/index.html.twig', [
+        'reclamations' => $reclamationByDate,
+    ]);
+
+}
+
+    
 
     /*#[Route('/addrec', name: 'app_rec_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ReclamationRepository $reclamationRepository): Response
@@ -82,14 +194,15 @@ public function new(Request $request, int $clientId): Response
     $mailer->Host = 'smtp.gmail.com';
     $mailer->Port = 587;
     $mailer->SMTPAuth = true;
-    $mailer->Username = 'rania.hachem@esprit.tn';
-    $mailer->Password = '201JFT4388';
-    $mailer->setFrom('E-Fit');
+    $mailer->Username = 'autoxpress2023@gmail.com';
+    $mailer->Password = 'cjotybjburaneepj    ';
+    $mailer->setFrom('Autoxpress');
     $mailer->addAddress($client->getEmailClient());
    
     
     $mailer->Subject = 'Reclamation';
-    $mailer->Body = 'Votre reclamation de type ' .$reclamation->getType().' a été peise en considération. merci pour votre retour/n Cordialement, équipe de service client';
+    $mailer->Body = 'Votre reclamation de type ' .$reclamation->getType().' a été prise en considération. nous vous repondrons au plus vite. merci pour votre retour
+    Cordialement, équipe de service client';
     
     if (!$mailer->send()) {
         // Gestion des erreurs d'envoi de l'e-mail
@@ -164,30 +277,6 @@ public function new(Request $request, int $clientId): Response
     
 
 
-    #[Route('/order_By_Type', name: 'order_By_Type', methods: ['GET'])]
-    public function order_By_Type(ReclamationRepository $reclamationRepository): Response
-    {
-        $reclamationByType = $reclamationRepository->orderByType();
-
-        return $this->render('rec/index.html.twig', [
-            'reclamations' => $reclamationByType,
-        ]);
-    }
-
-
-    
-    #[Route('/order_By_Date', name: 'order_By_Date', methods: ['GET'])]
-    public function order_By_Date(ReclamationRepository $reclamationRepository): Response
-    {
-
-        $reclamationByDate = $reclamationRepository->order_By_Date();
-
-        return $this->render('rec/index.html.twig', [
-            'reclamations' => $reclamationByDate,
-        ]);
-
-    }
-
     #[Route('/searchRec', name: 'searchRec')]
     public function searchRec(Request $request, ReclamationRepository $repository)
     {
@@ -212,104 +301,8 @@ $reclamations = $client->getReclamations();
         'reclamations' => $reclamations,
     ]);
 }
-    
 
 
-
-#[Route('/stat2', name: 'app_rec_stat')]
-public function listreclamation(Request $request, PaginatorInterface $paginator, ReclamationRepository $reclamationRepository): Response
-{
-    $reclamations = $reclamationRepository->findBy(['type' => 'service technique autre']);
-
-    $stats = [
-        'total' => count($reclamations),
-        'types' => [],
-    ];
-
-    foreach ($reclamations as $reclamation) {
-        $type = $reclamation->getType();
-        if (!isset($stats['types'][$type])) {
-            $stats['types'][$type] = 1;
-        } else {
-            $stats['types'][$type]++;
-        }
-    }
-
-    $reclamations = $paginator->paginate(
-        $reclamations,
-        $request->query->getInt('page', 1),
-        4
-    );
-
-    return $this->render('rec/index.html.twig', [
-        'reclamations' => $reclamations,
-        'stats' => $stats,
-    ]);    
-}
-
-
-
-#[Route('/stat/{type}' , name:'stat')]
-
-public function reclamationsParType(string $type, ReclamationRepository $repository)
-{
-    $type1Count = $repository->findReclamationsByType('Service');
-    $type2Count = $repository->findReclamationsByType('Technique');
-    $type3Count = $repository->findReclamationsByType('Autre');
-    
-    $chart = new PieChart();
-    $chart->getData()->setArrayToDataTable([
-        ['Type de réclamation', 'Nombre de réclamations'],
-        ['Service', (int) $type1Count],
-        ['Technique', (int) $type2Count],
-        ['Autre', (int) $type3Count]
-    ]);
-    $chart->getOptions()->setTitle('Réclamations par type');
-    
-    return $this->render('rec/stat.html.twig', [
-        'chart' => $chart
-    ]);
-}
-
-
-
-
-
-
-
-#[Route('/stat' , name:'stat')]
-
-    public function stat( ReclamationRepository $repository)
-    {
-
-        $newReclamationCount =$repository->findNewReclamation();
-        $ReclamationTrite = $repository->findReclamationspartype();
-       
-        $EmnaChart1 = new PieChart();
-        $EmnaChart1->getData()->setArrayToDataTable(
-            [['Task', 'Hours per Day'],
-                ['Reclamation Financier',((int) $ReclamationTrite)],
-          
-            ]
-        );
-        $EmnaChart1->getOptions()->setTitle("L'ETAT DES Reclamation D'AUJOURD'HUIT");
-        $EmnaChart1->getOptions()->setHeight(400);
-        $EmnaChart1->getOptions()->setIs3D(2);
-        $EmnaChart1->getOptions()->setWidth(550);
-        $EmnaChart1->getOptions()->getTitleTextStyle()->setBold(true);
-        $EmnaChart1->getOptions()->getTitleTextStyle()->setColor('#009900');
-        $EmnaChart1->getOptions()->getTitleTextStyle()->setItalic(true);
-        $EmnaChart1->getOptions()->getTitleTextStyle()->setFontName('Arial');
-        $EmnaChart1->getOptions()->getTitleTextStyle()->setFontSize(15);
-
-        return $this->render('rec/stat.html.twig', array(
-            'EmnaChart1' => $EmnaChart1 ,
-          ));
-
-
-
-
-    }
 
 
 }

@@ -1,33 +1,41 @@
 {% extends 'baseback.html.twig' %}
-{% block title %}Sponsor {% endblock %}
+
+{% block title %}Statistiques des réclamations{% endblock %}
 
 {% block body %}
+<div class="container" style="background-color: white; height: 600px;">
+    <div id="chart_div"></div>
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
 
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable({{ reclamation_counts|raw }});
 
+            var options = {
+                title: "Statistique des réclamations par type",
+                is3D: true,
+                width: 800,
+                height: 600,
+                titleTextStyle: {
+                    bold: true,
+                    color: '#000000',
+                    fontName: 'Arial',
+                    fontSize: 20,
+                },
+                chartArea: {  // centrage du graphique
+        width: '100%',
+        height: '80%',
+        left: '50%',
+        top: '20%',
+    },
+            };
 
-   <!-- Content Row -->
-
-                <div class="row">
-
-                    <!-- Emna CHART -->
-                    <div class="col-xl-6 col-lg-7">
-                      <div>Sponsor Type </div>
-                        <div id="EmnaChart1"></div>
-
-                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                        <script type="text/javascript">
-                            {{ gc_draw(EmnaChart1, 'EmnaChart1') }}
-                        </script>
-
-                        </script>
-                    </div>
-
-                      </div>
-
-                <!-- Content Row -->
-
-
-
-
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+    </div>
 {% endblock %}

@@ -20,7 +20,59 @@ class ReclamationRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Reclamation::class);
     }
+    public function findunansweredRec()
+{
+    $entityManager = $this->getEntityManager();
+    $query = $entityManager->createQuery(
+        'SELECT r
+        FROM App\Entity\Reclamation r
+        LEFT JOIN r.messages m
+        WHERE m.id IS NULL'
+    );
 
+    return $query->getResult();
+}
+
+    
+    public function findNewReclamation()
+    {
+        $entityManager = $this->getEntityManager();
+    
+        $query = $entityManager->createQuery(
+            'SELECT COUNT(r)
+            FROM App\Entity\Reclamation r
+            WHERE r.type = :type'
+        )->setParameter('type', 'nouveau');
+    
+        return $query->getSingleScalarResult();
+    }
+    
+
+    /*public function findReclamationsByType($type)
+{
+    return $this->createQueryBuilder('r')
+        ->select('count(r)')
+        ->andWhere('r.type = :type')
+        ->setParameter('type', $type)
+        ->getQuery()
+        ->getSingleScalarResult();
+}*/
+
+public function findReclamationsByType($type)
+{
+    $entityManager = $this->getEntityManager();
+    $query = $entityManager->createQuery(
+        'SELECT COUNT(r)
+        FROM App\Entity\Reclamation r
+        WHERE r.type = :type'
+    )->setParameter('type', $type);
+
+    return $query->getSingleScalarResult();
+}
+
+
+
+    
     public function save(Reclamation $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -41,7 +93,7 @@ class ReclamationRepository extends ServiceEntityRepository
 
 
 
-    public function findReclamationsByType($type)
+    /*public function findReclamationsByType($type)
 {
     return $this->createQueryBuilder('r')
         ->select('count(r)')
@@ -49,7 +101,7 @@ class ReclamationRepository extends ServiceEntityRepository
         ->setParameter('type', $type)
         ->getQuery()
         ->getSingleScalarResult();
-}
+}*/
    
 //    /**
 //     * @return Reclamation[] Returns an array of Reclamation objects
@@ -96,6 +148,13 @@ public function orderByType()
             ->orderBy('s.date_r', 'ASC')
             ->getQuery()->getResult();
     }
-
+    public function trierpardate()
+    {
+        return $this->createQueryBuilder('r')
+            ->orderBy('r.date_r', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+    
 
 }

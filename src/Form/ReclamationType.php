@@ -26,14 +26,7 @@ class ReclamationType extends AbstractType
             'choices' => $options,
         ))
             ->add('date_r')
-            ->add('description')
-            ->add('captcha', CaptchaType::class,[
-                'attr' => [
-                   
-                    'class' => "form-control"
-                ],
-                ]
-            );
+            ->add('description');
             //->add('id_client')
     }
 

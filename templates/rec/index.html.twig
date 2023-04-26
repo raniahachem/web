@@ -6,9 +6,11 @@
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Les réclamations</h6>
+                     <a href="{{ path('app_rec_reponse')}}" style="background-color: red; color: white; border-radius: 5px; padding: 10px;">Voir les réclamations à traiter</a>
                         <a href="">Rafraichir</a>
                     </div>
                     <div class="table-responsive">
+                    <h1><span style="font-size: 24px; color: white; background-color: black; padding: 5px; border-radius: 5px;">Reclamations recus: ({{ reclamations.getTotalItemCount }})</span></h1>
                         <table class="table text-start align-middle table-bordered table-hover mb-0" style="width: 90%; border-color: white;">
                             <thead>
                                 <tr class="text-white">
@@ -52,13 +54,7 @@
                         {% endfor %}
                         </tbody>
                     </table>
-                    <li>
-                    <a href="#">Trie</a>
-                    <ul>
-                        <li><a href="{{ path('order_By_Type')}}">Trie par Type</a></li>
-                        <li><a href="{{ path('order_By_Date')}}">Trie par Date</a></li>              
-                    </ul>
-                </li>
+                    {{ knp_pagination_render(reclamations) }}
                     </div>
                 </div>
             </div>

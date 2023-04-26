@@ -1,4 +1,4 @@
 framework:
  mailer:
-    dsn: 'gmail+smtp://rania.hachem@esprit.tn:201JFT4388@default'
+    dsn: 'gmail+smtp://autoxpress2023@gmail.com:cjotybjburaneepj@default'
     message_bus: false
