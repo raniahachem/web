@@ -10,9 +10,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+ 
+use Symfony\Component\Mailer\MailerInterface;
+ 
 
 #[Route('/offre')]
 class OffreController extends AbstractController
@@ -56,9 +57,11 @@ class OffreController extends AbstractController
         ]);
     }
 
+
  
+    
     #[Route('/new', name: 'app_offre_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, OffreRepository $offreRepository, MailerInterface $mailer): Response
+    public function new(Request $request, OffreRepository $offreRepository,MailerInterface $mailer): Response
     {
          
              
@@ -66,12 +69,13 @@ class OffreController extends AbstractController
         
         $form = $this->createForm(OffreType::class, $offre);
         $form->handleRequest($request);
+
         
         $email = (new Email())
-        ->from('selim.boulaaba@esprit.tn')
-        ->to('nour.benmiled@esprit.tn')
+        ->from('nour.benmiled@esprit.tn')
+        ->to('ons.hamdi@esprit.tn')
         ->subject('bienvenue dans notre espace client!')
-        ->html('<p>Merci pour votre réclamation on va vous contactez lorsque notre équipe technique sera disponible!</p>');
+        ->html('<p> votre offre a été ajouté avec succes </p>');
 
     $mailer->send($email);
     $this->addFlash(
@@ -82,7 +86,10 @@ class OffreController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $offreRepository->save($offre, true);
+            $offreRepository->save($offre,$mailer, true);
+ 
+
+            
             return $this->redirectToRoute('app_offre_index', [], Response::HTTP_SEE_OTHER);
         }
         return $this->renderForm('offre/new.html.twig', [

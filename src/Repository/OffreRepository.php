@@ -2,9 +2,15 @@
 
 namespace App\Repository;
 
+use Symfony\Component\HttpFoundation\RequestStack;
 use App\Entity\Offre;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+
+use Symfony\Component\Mime\Email;
+ 
+use Symfony\Component\Mailer\MailerInterface;
+use App\Service\MailerService;
 
 /**
  * @extends ServiceEntityRepository<Offre>
@@ -16,14 +22,32 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class OffreRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, RequestStack $requestStack)
     {
         parent::__construct($registry, Offre::class);
+        $this->requestStack = $requestStack;
     }
 
-    public function save(Offre $entity, bool $flush = false): void
+    public function save(Offre $entity,MailerInterface $mailer, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
+
+
+        $email = (new Email())
+        ->from('nour.benmiled@esprit.tn')
+        ->to('ons.hamdi@esprit.tn')
+        ->subject('bienvenue dans notre espace client!')
+        ->html('<p>  avec succes </p>');
+
+    $mailer->send($email);
+    
+    $session = $this->requestStack->getCurrentRequest()->getSession();
+    $session->getFlashBag()->add(
+        'success',
+        '  avec succès'
+       
+    );
+
 
         if ($flush) {
             $this->getEntityManager()->flush();

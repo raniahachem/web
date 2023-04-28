@@ -12,6 +12,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Symfony\Component\Mime\Email;
+use App\Service\MailerService;
+use Symfony\Component\Mailer\MailerInterface;
+
 
 #[Route('/reservation')]
 class ReservationController extends AbstractController
@@ -78,14 +82,14 @@ class ReservationController extends AbstractController
     }
 
     #[Route('/reserverfront/new', name: 'app_reservation_new_reserver', methods: ['GET', 'POST'])]
-    public function newfrontreserver(Request $request, ReservationRepository $reservationRepository): Response
+    public function newfrontreserver(Request $request, ReservationRepository $reservationRepository,MailerInterface $mailer): Response
     {
         $reservation = new Reservation();
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $reservationRepository->saveO($reservation, true);
+            $reservationRepository->saveO($reservation,$mailer, true);
 
             return $this->redirectToRoute('app_reservation_index_Client', [], Response::HTTP_SEE_OTHER);
         }
