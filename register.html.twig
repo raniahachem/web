@@ -36,6 +36,8 @@
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
+    
+
 
    
 {{ form_start(registrationForm, {'attr': {'class': 'bg-secondary rounded h-100 p-4'}}) }}
@@ -85,5 +87,4 @@
                 <button type="submit" class="btn btn-primary">Enregistrer</button>
     {{ form_end(registrationForm) }}
     <a href="login">Already have an account?</a>
-    </div
-
+    </div>

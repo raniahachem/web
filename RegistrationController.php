@@ -33,8 +33,11 @@ class RegistrationController extends AbstractController
         $user = new Conducteur();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
-
+    
         if ($form->isSubmitted() && $form->isValid()) {
+            // Check if the email address already exists
+            $existingUser = $entityManager->getRepository(Conducteur::class)->findOneBy(['email_conducteur' => $user->getEmailConducteur()]);
+           
             // encode the plain password
             $user->setMdpConducteur(
                 $userPasswordHasher->hashPassword(
@@ -42,31 +45,39 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
+    
             $entityManager->persist($user);
             $entityManager->flush();
-
+    
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
-                    ->from(new Address('nermine.tarhouni@esprit.tn', 'AutoXpress'))
+                    ->from(new Address('autoxpresstn@gmail.com', 'AutoXpress'))
                     ->to($user->getEmailConducteur())
                     ->subject('Please Confirm your Email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
             // do anything else you need here, like send an email
-
+    
             return $userAuthenticator->authenticateUser(
                 $user,
                 $authenticator,
                 $request
             );
         }
-
+        $existingUser = $entityManager->getRepository(Conducteur::class)->findOneBy(['email_conducteur' => $user->getEmailConducteur()]);
+      
+        if ($existingUser !== null) {
+            // Display error message with JavaScript
+            echo '<script>alert("There is already an account with this email.");</script>';
+            
+        }
+        
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }
+    
 
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
