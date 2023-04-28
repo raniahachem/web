@@ -31,8 +31,9 @@ private ?DateTimeInterface $date_message = null;
     private ?Reclamation $id_rec = null;
 
     #[ORM\ManyToOne(inversedBy: 'messages')]
+    #[ORM\JoinColumn(name: 'id_admin_id', referencedColumnName: 'id_admin')]
     #[Assert\NotBlank(message:"Admin doit etre selectionné")]
-    private ?Admin $id_admin = null;
+    private ?Admin $id_admin_id = null;
 
     
 
@@ -89,12 +90,12 @@ public function setDateMessage(DateTimeInterface $date_message): self
 
     public function getIdAdmin(): ?Admin
     {
-        return $this->id_admin;
+        return $this->id_admin_id;
     }
 
     public function setIdAdmin(?Admin $id_admin): self
     {
-        $this->id_admin = $id_admin;
+        $this->id_admin_id = $id_admin;
 
         return $this;
     }
@@ -105,10 +106,14 @@ public function setDateMessage(DateTimeInterface $date_message): self
 }
 
 
-    public function getAdminName(): ?string
+    /*public function getAdminName(): ?string
     {
-        return $this->id_admin->getId();
-    }
+        return $this->id_admin_id->getId();
+    }*/
+    public function getAdminName(): ?string
+{
+    return $this->id_admin_id->getEmailAd();
+}
     public function getRec(): ?string
     {
         return $this->id_rec->getId();

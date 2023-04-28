@@ -13,7 +13,7 @@ class Admin
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private ?int $id_admin = null;
 
     #[ORM\Column(length: 255)]
     private ?string $email_ad = null;
@@ -21,7 +21,7 @@ class Admin
     #[ORM\Column(length: 255)]
     private ?string $mdp_ad = null;
 
-    #[ORM\OneToMany(mappedBy: 'id_admin', targetEntity: Message::class)]
+    #[ORM\OneToMany(mappedBy: 'id_admin_id', targetEntity: Message::class)]
     private Collection $messages;
 
     public function __construct()
@@ -31,7 +31,7 @@ class Admin
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->id_admin;
     }
 
     public function getEmailAd(): ?string

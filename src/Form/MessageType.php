@@ -28,7 +28,14 @@ class MessageType extends AbstractType
                 'input' => 'datetime_immutable',
             ])
             
-            ->add('id_admin');
+            ->add('id_admin', EntityType::class, [
+                'class' => Admin::class,
+                'choice_label' => 'emailAd',
+                'label' => 'Admin',
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -13,7 +13,7 @@ class Client
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private ?int $id_client = null;
 
     #[ORM\Column]
     private ?int $cin_client = null;
@@ -36,20 +36,23 @@ class Client
     #[ORM\Column(length: 255)]
     private ?string $mdp_client = null;
 
-
-
-    #[ORM\OneToMany(mappedBy: 'id_client', targetEntity: Reclamation::class)]
+    #[ORM\OneToMany(mappedBy: 'id_client_id', targetEntity: Reclamation::class)]
     private Collection $reclamations;
 
     public function __construct()
     {
-        
         $this->reclamations = new ArrayCollection();
     }
 
+
+
+    
+
+   
+
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->id_client;
     }
 
     public function getCinClient(): ?int
@@ -145,6 +148,10 @@ class Client
     /**
      * @return Collection<int, Reclamation>
      */
+
+    /**
+     * @return Collection<int, Reclamation>
+     */
     public function getReclamations(): Collection
     {
         return $this->reclamations;
@@ -171,4 +178,5 @@ class Client
 
         return $this;
     }
+    
 }

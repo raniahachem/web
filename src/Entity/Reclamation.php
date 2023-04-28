@@ -36,8 +36,7 @@ class Reclamation
      #[Assert\Length(min:7,max:10000, minMessage:"Doit etre > 7.", maxMessage:"Doit etre <=10000")]
     private ?string $description = null;
 
-    #[ORM\ManyToOne(inversedBy: 'reclamations')]
-    private ?Client $id_client = null;
+
     
 
     public function getId(): ?int
@@ -97,31 +96,22 @@ class Reclamation
         $this->messages = new ArrayCollection();
     }
 
-    public function getIdClient(): ?Client
-    {
-        return $this->id_client;
-    }
-
-    public function setIdClient(?Client $id_client): self
-    {
-        $this->id_client = $id_client;
-
-        return $this;
-    }
+   
     
     /*public function getClientName(): ?string
     {
         return $this->id_client->getNomClient();
     }*/
 
-    public function getClientName(): ?string
-{
-    return $this->id_client ? $this->id_client->getNomClient() : null;
-}
+
 
 
 #[ORM\OneToMany(mappedBy: 'id_rec', targetEntity: Message::class)]
 private $messages;
+
+#[ORM\ManyToOne(inversedBy: 'reclamations')]
+#[ORM\JoinColumn(name: 'id_client_id', referencedColumnName: 'id_client')]
+private ?Client $id_client_id = null;
 
 
 public function getMessages()
@@ -149,6 +139,22 @@ public function removeMessage(Message $message)
     }
 
     return $this;
+}
+
+public function getIdClient(): ?Client
+{
+    return $this->id_client_id;
+}
+
+public function setIdClient(?Client $id_client_id): self
+{
+    $this->id_client_id = $id_client_id;
+
+    return $this;
+}
+public function getClientName(): ?string
+{
+    return $this->id_client_id ? $this->id_client_id->getNomClient() : null;
 }
 
 }
