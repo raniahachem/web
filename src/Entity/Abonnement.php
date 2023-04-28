@@ -1,91 +1,65 @@
 <?php
 
 namespace App\Entity;
-use Symfony\Component\Validator\Constraints as Assert;
 
+use App\Repository\AbonnementRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Abonnement
- *
- * @ORM\Table(name="abonnement", uniqueConstraints={@ORM\UniqueConstraint(name="id_ab", columns={"idAb"})})
- * @ORM\Entity
- */
+#[ORM\Entity(repositoryClass: AbonnementRepository::class)]
 class Abonnement
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="idAb", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-     private $idab;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="typeAb", type="string", length=255, nullable=false)
-     * @Assert\NotBlank(message="TypeAB should not be blank.")
-     */
-    private $typeab;
+    #[ORM\Column(length: 255)]
+    private ?string $typeAb = null;
 
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="prixAb", type="float", precision=10, scale=0, nullable=false)
-     *  @Assert\NotBlank(message="TypeAB should not be blank.")
-     */
-    private $prixab;
+    #[ORM\Column]
+    private ?float $prixAb = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="modePaiementAb", type="string", length=255, nullable=false)
-     *  @Assert\NotBlank(message="TypeAB should not be blank.")
-     */
-    private $modepaiementab;
+    #[ORM\Column(length: 255)]
+    private ?string $modePaiementAb = null;
 
-    public function getIdab(): ?int
+    public function getId(): ?int
     {
-        return $this->idab;
+        return $this->id;
     }
 
-    public function getTypeab(): ?string
+    public function getTypeAb(): ?string
     {
-        return $this->typeab;
+        return $this->typeAb;
     }
 
-    public function setTypeab(string $typeab): self
+    public function setTypeAb(string $typeAb): self
     {
-        $this->typeab = $typeab;
+        $this->typeAb = $typeAb;
 
         return $this;
     }
 
-    public function getPrixab(): ?float
+    public function getPrixAb(): ?float
     {
-        return $this->prixab;
+        return $this->prixAb;
     }
 
-    public function setPrixab(float $prixab): self
+    public function setPrixAb(float $prixAb): self
     {
-        $this->prixab = $prixab;
+        $this->prixAb = $prixAb;
 
         return $this;
     }
 
-    public function getModepaiementab(): ?string
+    public function getModePaiementAb(): ?string
     {
-        return $this->modepaiementab;
+        return $this->modePaiementAb;
     }
 
-    public function setModepaiementab(string $modepaiementab): self
+    public function setModePaiementAb(string $modePaiementAb): self
     {
-        $this->modepaiementab = $modepaiementab;
+        $this->modePaiementAb = $modePaiementAb;
 
         return $this;
     }
-
-
 }

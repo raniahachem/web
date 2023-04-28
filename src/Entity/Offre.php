@@ -2,73 +2,45 @@
 
 namespace App\Entity;
 
+use App\Repository\OffreRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Offre
- *
- * @ORM\Table(name="offre")
- * @ORM\Entity
- */
+#[ORM\Entity(repositoryClass: OffreRepository::class)]
 class Offre
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id_offre", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idOffre;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id_conducteur", type="integer", nullable=false)
-     */
-    private $idConducteur;
+    #[ORM\Column(length: 255)]
+    private ?string $conducteur = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Destination", type="string", length=255, nullable=false)
-     */
-    private $destination;
+    #[ORM\Column(length: 255)]
+    private ?string $destination = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="pt_depart", type="string", length=255, nullable=false)
-     */
-    private $ptDepart;
+    #[ORM\Column(length: 255)]
+    private ?string $pt_depart = null;
 
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="Prix", type="float", precision=10, scale=0, nullable=false)
-     */
-    private $prix;
+    #[ORM\Column]
+    private ?int $prix = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Type_vehicule", type="string", length=255, nullable=false)
-     */
-    private $typeVehicule;
+    #[ORM\Column(length: 255)]
+    private ?string $typeVehicule = null;
 
-    public function getIdOffre(): ?int
+    public function getId(): ?int
     {
-        return $this->idOffre;
+        return $this->id;
     }
 
-    public function getIdConducteur(): ?int
+    public function getConducteur(): ?string
     {
-        return $this->idConducteur;
+        return $this->conducteur;
     }
 
-    public function setIdConducteur(int $idConducteur): self
+    public function setConducteur(string $conducteur): self
     {
-        $this->idConducteur = $idConducteur;
+        $this->conducteur = $conducteur;
 
         return $this;
     }
@@ -87,22 +59,22 @@ class Offre
 
     public function getPtDepart(): ?string
     {
-        return $this->ptDepart;
+        return $this->pt_depart;
     }
 
-    public function setPtDepart(string $ptDepart): self
+    public function setPtDepart(string $pt_depart): self
     {
-        $this->ptDepart = $ptDepart;
+        $this->pt_depart = $pt_depart;
 
         return $this;
     }
 
-    public function getPrix(): ?float
+    public function getPrix(): ?int
     {
         return $this->prix;
     }
 
-    public function setPrix(float $prix): self
+    public function setPrix(int $prix): self
     {
         $this->prix = $prix;
 
@@ -120,6 +92,4 @@ class Offre
 
         return $this;
     }
-
-
 }

@@ -2,30 +2,28 @@
 
 namespace App\Form;
 
-use App\Entity\Contrat;
+use App\Entity\Offre;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ContratType extends AbstractType
+class OffreType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('id_conducteur')
-            ->add('id_admin')
-            ->add('date_debut')
-            ->add('date_fin')
+            ->add('conducteur')
+            ->add('destination')
+            ->add('pt_depart')
             ->add('prix')
-            ->add('statut')
-            ->add('qrCode')
+            ->add('typeVehicule')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Contrat::class,
+            'data_class' => Offre::class,
         ]);
     }
 }

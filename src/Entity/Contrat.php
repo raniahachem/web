@@ -1,130 +1,99 @@
 <?php
 
 namespace App\Entity;
-use Symfony\Component\Validator\Constraints as Assert;
 
+use App\Repository\ContratRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-
-
-/**
- * Contrat
- *
- * @ORM\Table(name="contrat")
- * @ORM\Entity
- */
+#[ORM\Entity(repositoryClass: ContratRepository::class)]
 class Contrat
 {
-      
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id_contrat", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-     */
+    #[ORM\Column]
+    private ?int $id_conducteur = null;
 
-private $idContrat ; 
-    
+    #[ORM\Column]
+    private ?int $id_admin = null;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id_conducteur", type="integer", nullable=false)
-          * @Assert\NotBlank(message="id conducteur should not be blank.")
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date_debut = null;
 
-     */
-    private $idConducteur;
-    
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id_admin", type="integer", nullable=false)
-     * @Assert\NotBlank(message="id admin should not be blank.")
-     */
-    private $idAdmin;
-   
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_debut", type="date", nullable=false)
-     *  @Assert\NotBlank(message="date  should not be blank.")
-     */
-    private $dateDebut;
-   
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_fin", type="date", nullable=false)
-     * @Assert\NotBlank(message="date fin should not be blank.")
-     */
-    
-    private $dateFin;
-    
-    /**
-    * @var int
-     *
-     * @ORM\Column(name="prix", type="integer", nullable=false)
-     *@Assert\NotBlank(message="prix should not be blank.")
-     */
-    private $prix;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="statut", type="string", length=50, nullable=false)
-     * @Assert\NotBlank(message="statut  should not be blank.")
-     */
-    private $statut;
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date_fin = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="qrCode", type="string", length=1000, nullable=false)
-     * @Assert\NotBlank(message="qrcode should not be blank.")
-     */
-    private $qrCode;
+    #[ORM\Column]
+    private ?float $prix = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $statut = null;
 
-    
+    #[ORM\Column(length: 255)]
+    private ?string $qrCode = null;
 
-    public function getIdContrat(): ?int
+    public function getId(): ?int
     {
-        return $this->idContrat;
+        return $this->id;
+    }
+
+    public function getIdConducteur(): ?int
+    {
+        return $this->id_conducteur;
+    }
+
+    public function setIdConducteur(int $id_conducteur): self
+    {
+        $this->id_conducteur = $id_conducteur;
+
+        return $this;
+    }
+
+    public function getIdAdmin(): ?int
+    {
+        return $this->id_admin;
+    }
+
+    public function setIdAdmin(int $id_admin): self
+    {
+        $this->id_admin = $id_admin;
+
+        return $this;
     }
 
     public function getDateDebut(): ?\DateTimeInterface
     {
-        return $this->dateDebut;
+        return $this->date_debut;
     }
 
-    public function setDateDebut(\DateTimeInterface $dateDebut): self
+    public function setDateDebut(\DateTimeInterface $date_debut): self
     {
-        $this->dateDebut = $dateDebut;
+        $this->date_debut = $date_debut;
 
         return $this;
     }
 
     public function getDateFin(): ?\DateTimeInterface
     {
-        return $this->dateFin;
+        return $this->date_fin;
     }
 
-    public function setDateFin(\DateTimeInterface $dateFin): self
+    public function setDateFin(\DateTimeInterface $date_fin): self
     {
-        $this->dateFin = $dateFin;
+        $this->date_fin = $date_fin;
 
         return $this;
     }
 
-    public function getPrix(): ?int
+    public function getPrix(): ?float
     {
         return $this->prix;
     }
 
-    public function setPrix(int $prix): self
+    public function setPrix(float $prix): self
     {
         $this->prix = $prix;
 
@@ -143,30 +112,6 @@ private $idContrat ;
         return $this;
     }
 
-    public function getIdAdmin(): ?int
-    {
-        return $this->idAdmin;
-    }
-
-    public function setIdAdmin(?int $idAdmin): self
-    {
-        $this->idAdmin = $idAdmin;
-
-        return $this;
-    }
-
-    public function getIdConducteur(): ?int
-    {
-        return $this->idConducteur;
-    }
-
-    public function setIdConducteur(?int $idConducteur): self
-    {
-        $this->idConducteur = $idConducteur;
-
-        return $this;
-    }
-
     public function getQrCode(): ?string
     {
         return $this->qrCode;
@@ -178,6 +123,4 @@ private $idContrat ;
 
         return $this;
     }
-
-
 }
