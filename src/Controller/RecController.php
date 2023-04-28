@@ -201,8 +201,12 @@ public function new(Request $request, int $clientId): Response
    
     
     $mailer->Subject = 'Reclamation';
-    $mailer->Body = 'Votre reclamation de type ' .$reclamation->getType().' a été prise en considération. nous vous repondrons au plus vite. merci pour votre retour
-    Cordialement, équipe de service client';
+$mailer->Body = 'Votre réclamation de type ' . $reclamation->getType() . ' a été prise en considération. 
+Nous vous répondrons au plus vite, pour cela, veuillez checker la rubrique "mes anciennes réclamations" depuis notre site web.
+
+Cordialement,
+L\'équipe de service client';
+
     
     if (!$mailer->send()) {
         // Gestion des erreurs d'envoi de l'e-mail
@@ -247,7 +251,7 @@ public function new(Request $request, int $clientId): Response
         if ($form->isSubmitted() && $form->isValid()) {
             $reclamationRepository->save($reclamation, true);
 
-            return $this->redirectToRoute('app_rec_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_rec_new', ['clientId' => $reclamation->getIdClient()->getId()]);
         }
 
         return $this->renderForm('rec/edit.html.twig', [
@@ -266,15 +270,15 @@ public function new(Request $request, int $clientId): Response
         return $this->redirectToRoute('app_rec_index', [], Response::HTTP_SEE_OTHER);
     }
     #[Route('/del/{id}', name: 'app_rec_deleteclient', methods: ['POST'])]
-    public function deletepourclient(Request $request, Reclamation $reclamation, ReclamationRepository $reclamationRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$reclamation->getId(), $request->request->get('_token'))) {
-            $reclamationRepository->remove($reclamation, true);
-        }
-    
-        return $this->redirectToRoute('app_rec_indexclient');
+public function deletepourclient(Request $request, Reclamation $reclamation, ReclamationRepository $reclamationRepository): Response
+{
+    if ($this->isCsrfTokenValid('delete'.$reclamation->getId(), $request->request->get('_token'))) {
+        $reclamationRepository->remove($reclamation, true);
     }
-    
+
+    return $this->redirectToRoute('app_rec_new', ['clientId' => $reclamation->getIdClient()->getId()]);
+}
+
 
 
     #[Route('/searchRec', name: 'searchRec')]
