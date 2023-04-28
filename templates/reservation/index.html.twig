@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reservation index{% endblock %}
+{% block title %}La liste des reservations{% endblock %}
 
 {% block body %}
-    <h1>Reservation index</h1>
+    <h1>La liste des réservations</h1>
 
     <table class="table">
         <thead>
@@ -39,9 +39,12 @@
             <tr>
                 <td colspan="9">no records found</td>
             </tr>
+            
         {% endfor %}
+        
         </tbody>
     </table>
-
+{{ knp_pagination_render(reservations) }}
   
+
 {% endblock %}
