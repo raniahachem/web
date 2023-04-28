@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Offre;
+use App\Entity\Reservation;
 use App\Service\MailerService;
 use App\Form\OffreType;
+use App\Form\SearchType;
 use App\Repository\OffreRepository;
+use App\Repository\ReservationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,31 +16,68 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Mime\Email;
  
 use Symfony\Component\Mailer\MailerInterface;
+
+use Symfony\Component\HttpFoundation\JsonResponse;
  
 
+use Knp\Component\Pager\PaginatorInterface;
+use PDO;
+ 
+use Knp\Bundle\PaginatorBundle\Pagination\SlidingPaginationInterface;
+use Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 #[Route('/offre')]
 class OffreController extends AbstractController
 {
     #[Route('/', name: 'app_offre_index', methods: ['GET'])]
-    public function indexAdminConducteur(OffreRepository $offreRepository): Response
+    public function indexAdminConducteur(OffreRepository $offreRepository,Request $request, PaginatorInterface $paginator): Response
     {
+
+        $offres = $offreRepository->findAll();
+        $offres = $paginator->paginate(
+            $offres,
+            $request->query->getInt('page', 1),
+            7
+        );
+
         return $this->render('offre/index.html.twig', [
-            'offres' => $offreRepository->findAll(),
+            'offres' => $offres,
         ]);
+
+         
     }
     #[Route('/admin', name: 'app_offre_index_admin', methods: ['GET'])]
-    public function indexAdmin(OffreRepository $offreRepository): Response
+    public function indexAdmin(OffreRepository $offreRepository,Request $request, PaginatorInterface $paginator): Response
     {
+
+        $offres = $offreRepository->findAll();
+        $offres = $paginator->paginate(
+            $offres,
+            $request->query->getInt('page', 1),
+            7
+        );
+
         return $this->render('offre/indexAdmin.html.twig', [
-            'offres' => $offreRepository->findAll(),
+            'offres' => $offres,
         ]);
+ 
     }
     #[Route('/listOffre', name: 'app_offre_index_Client', methods: ['GET'])]
-    public function indexClient(OffreRepository $offreRepository): Response
+    public function indexClient(OffreRepository $offreRepository,ReservationRepository $reservationRepository,Request $request, PaginatorInterface $paginator): Response
     {
-        return $this->render('offre/indexClient.html.twig', [
-            'offres' => $offreRepository->findAll(),
-        ]);
+         
+
+    $offres = $offreRepository->findAll();
+     
+     
+    return $this->render('offre/indexClient.html.twig', [
+        'offres' => $offres,
+         
+
+    ]);
+ 
+     
     }
 
      
@@ -70,19 +110,7 @@ class OffreController extends AbstractController
         $form = $this->createForm(OffreType::class, $offre);
         $form->handleRequest($request);
 
-        
-        $email = (new Email())
-        ->from('nour.benmiled@esprit.tn')
-        ->to('ons.hamdi@esprit.tn')
-        ->subject('bienvenue dans notre espace client!')
-        ->html('<p> votre offre a été ajouté avec succes </p>');
-
-    $mailer->send($email);
-    $this->addFlash(
-        'success',
-        'Votre demande a été envoyé avec succès'
-       
-    );
+         
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -164,6 +192,7 @@ class OffreController extends AbstractController
         ]);
     }
      
+    
 
     #[Route('/{idOffre}/edit', name: 'app_offre_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Offre $offre, OffreRepository $offreRepository, MailerService $mailer
@@ -230,21 +259,141 @@ class OffreController extends AbstractController
         return $this->redirectToRoute('app_offre_index', [], Response::HTTP_SEE_OTHER);
     }
 
-      //RECHERCHE :
-         
-    #[Route('/chercher', name: 'app_offre_recherche', methods: ['POST'])]
-    public function chercher(\Symfony\Component\HttpFoundation\Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $requestString = $request->get('q');// ooofkdokfdfdf
-        $comp =  $em->getRepository(Competition::class)->rechercheAvance($requestString);
-        if(!$comp) {
-            $result['comp']['error'] = "Competition de ce Nom non trouvé :( ";
-        } else {
-            $result['comp'] = $this->getRealEntities($comp);
-        }
-        return new Response(json_encode($result));
-    }
-    
-    
+      
+    #[Route('/list/filter', name: 'app_film_list_search')]
+public function searchList(Request $request, OffreRepository $offreRepository): JsonResponse
+{
+    $searchTerm = $request->query->get('searchTerm');
+  
+    $offres = $offreRepository->findLikeNom($searchTerm);
+   $form=$this->createForm(SearchType::class);
+   $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid()) {
+    $query = $form->getData()['query'];
+    dd($query);
+    // Perform the search with the query here...
 }
+
+    $data = [];
+    foreach ($offres as $offre) {
+        $data[] = [
+            'idOffre' => $offre->getIdOffre(),
+            'idClient' => $offre->getIdClient(),
+            'destination' => $offre->getDestination(),
+            'ptDepart' => $offre->getPtDepart(),
+            'prix' => $offre->getPrix(),
+            'typevehicule' => $offre->getTypeVehicule(),
+        ];
+    }
+
+    return new JsonResponse($data);
+}
+
+ 
+
+
+    #[Route('/ansewrs/popular', name: 'app_popular_ansewrs')]
+    public function popularAnsewrs(OffreRepository $offreRepository, Request $request)
+    {
+        $offres = $offreRepository->findMostPopular(
+            $request->query->get('q')
+        );
+
+        return $this->render('offre/index.html.twig', [
+            'offres' => $offres,
+        ]);
+    }
+
+
+    /*#[Route('/searchRec', name: 'searchRec')]
+    public function searchRec(Request $request, OffreRepository $repository)
+    {
+        $requestString = $request->get('q');
+        $Offres = $repository->findbytype($requestString);
+    
+        return $this->render('offre/index.html.twig', [
+            'offres' => $Offres,
+        ]);
+    }*/
+
+     
+    #[Route('offre/typeVehiculecl/{typeVehicule}', name: 'typeVehiculeClient', methods: ['GET'])]
+    public function indextypeVehiculeC(OffreRepository $offreRepository, $typeVehicule): Response
+    {
+        return $this->render('offre/indexClient2.html.twig', [
+            'offres' => $offreRepository->findByTypeVehicule($typeVehicule),
+        ]);
+    }
+
+    #[Route('/idconducteur/{idConducteur}', name: 'app_reservation_index_Clientid', methods: ['GET'])]
+    public function indexidConducteur(OffreRepository $offreRepository, $idConducteur): Response
+    {
+        return $this->render('offre/index.html.twig', [
+            'offres' => $reservationRepository->findByIdConducteur($idConducteur),
+        ]);
+    }
+
+}
+
+
+    /*#[Route('/chart', name: 'chart')]
+    public function charteOffres(): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        // Se connecter à la base de données
+        $pdo = new PDO('mysql:host=localhost;dbname=autoxpress', 'root', '');
+    
+        // Récupérer les données des types de véhicules et leurs quantités correspondantes depuis la base de données
+        $stmt = $pdo->query('SELECT Type_vehicule, COUNT(*) AS quantite FROM Offre GROUP BY Type_vehicule');
+        $vehicules = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        // Créer un tableau des noms de types de véhicules et des quantités correspondantes
+        $labels = array_column($vehicules, 'Type_vehicule');
+        $data = array_column($vehicules, 'quantite');
+    
+        // Renvoyer la vue avec les données
+        return $this->render('offre/chart.html.twig', [
+            'labels' => $labels,
+            'data' => $data,
+        ]);
+    }*/
+
+    /*#[Route('/stats', name: 'stats')]
+    public function stats() 
+    {
+        // Se connecter à la base de données
+        $pdo = new PDO('mysql:host=localhost;dbname=autoxpress', 'root', '');
+        // Récupérer les données des types de véhicules et leurs quantités correspondantes depuis la base de données
+        $stmt = $pdo->query('SELECT Type_vehicule, COUNT(*) AS quantite FROM Offre GROUP BY Type_vehicule');
+        $vehicules = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Créer un tableau des noms de types de véhicules et des quantités correspondantes
+        $labels = array_column($vehicules, 'Type_vehicule');
+        $data = array_column($vehicules, 'quantite');
+
+        // Afficher la vue avec les données de statistiques
+        return $this->render('stats.html.twig', [
+            'labels' => $labels,
+            'data' => $data,
+        ]);
+    }*/
+ 
+      
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+       
+    
+     
+     

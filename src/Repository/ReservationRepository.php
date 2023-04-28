@@ -14,6 +14,8 @@ use Symfony\Component\Mime\Email;
 use Symfony\Component\Mailer\MailerInterface;
 use App\Service\MailerService;
 
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+
 /**
  * @extends ServiceEntityRepository<Reservation>
  *
@@ -41,9 +43,25 @@ class ReservationRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Reservation $entity, bool $flush = false): void
+    public function remove(Reservation $entity,MailerInterface $mailer, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
+
+
+        $email = (new Email())
+        ->from('nour.benmiled@esprit.tn')
+        ->to('ons.hamdi@esprit.tn')
+        ->subject('Notification dannulation de réservation')
+        ->html('<p>  Le client avec l id: '. $entity->getIdConducteur().'  a annulé sa réservation de votre offre avec lid :'. $entity->getIdOffre().'vous pouvez la républier si vous voulez</p>');
+
+    $mailer->send($email);
+    
+    $session = $this->requestStack->getCurrentRequest()->getSession();
+    $session->getFlashBag()->add(
+        'success',
+        '  Le client a annulé sa réservation de votre offre avec lid.'
+       
+    );
 
         if ($flush) {
             $this->getEntityManager()->flush();
@@ -57,14 +75,17 @@ class ReservationRepository extends ServiceEntityRepository
         $offre = $offreRepository->findById($offreId);
        
 
-        
+        /*dd($entity->getIdOffre());*/
         $email = (new Email())
         ->from('nour.benmiled@esprit.tn')
         ->to('ons.hamdi@esprit.tn')
-        ->subject('bienvenue dans notre espace client!')
-        ->html('<p>  Votre offre a été réservée. </p>');
+        ->subject('bienvenue dans notre espace Admin!')
+        ->html('<p>  Votre offre avec l id: '. $entity->getIdOffre().'a été réservée, elle nest plus affiché sur la liste des offres disponibles</p>' );
 
     $mailer->send($email);
+     
+
+            $mailer->send($email);
     
     $session = $this->requestStack->getCurrentRequest()->getSession();
     $session->getFlashBag()->add(

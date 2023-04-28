@@ -15,17 +15,30 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Mime\Email;
 use App\Service\MailerService;
 use Symfony\Component\Mailer\MailerInterface;
+use Knp\Component\Pager\PaginatorInterface;
+
+ 
+use Knp\Bundle\PaginatorBundle\Pagination\SlidingPaginationInterface;
+use Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension;
 
 
 #[Route('/reservation')]
 class ReservationController extends AbstractController
 {
     #[Route('/', name: 'app_reservation_index', methods: ['GET'])]
-    public function index(ReservationRepository $reservationRepository): Response
+    public function index(ReservationRepository $reservationRepository, Request $request, PaginatorInterface $paginator ): Response
     {
+        $reservations = $reservationRepository->findAll();
+        $reservations = $paginator->paginate(
+            $reservations,
+            $request->query->getInt('page', 1),
+            7
+        );
         return $this->render('reservation/index.html.twig', [
-            'reservations' => $reservationRepository->findAll(),
+            'reservations' => $reservations,
+
         ]);
+         
     }
 
     #[Route('/listReservation', name: 'app_reservation_index_Client', methods: ['GET'])]
@@ -161,13 +174,13 @@ class ReservationController extends AbstractController
 
 
     #[Route('/{idReservation}', name: 'app_reservation_delete', methods: ['POST'])]
-    public function delete(Request $request, Reservation $reservation, ReservationRepository $reservationRepository): Response
+    public function delete(Request $request, Reservation $reservation, ReservationRepository $reservationRepository,MailerInterface $mailer): Response
     {
         if ($this->isCsrfTokenValid('delete'.$reservation->getIdReservation(), $request->request->get('_token'))) {
-            $reservationRepository->remove($reservation, true);
+            $reservationRepository->remove($reservation,$mailer, true);
         }
 
-        return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_reservation_index_Client', [], Response::HTTP_SEE_OTHER);
     }
      
     #[Route('/stats', name: 'app_reservation_stats', methods: ['POST'])]
