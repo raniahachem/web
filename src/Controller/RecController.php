@@ -251,7 +251,7 @@ L\'équipe de service client';
         if ($form->isSubmitted() && $form->isValid()) {
             $reclamationRepository->save($reclamation, true);
 
-            return $this->redirectToRoute('app_rec_new', ['clientId' => $reclamation->getIdClient()->getId()]);
+            return $this->redirectToRoute('app_rec_show', ['id' => $reclamation->getId()]);
         }
 
         return $this->renderForm('rec/edit.html.twig', [

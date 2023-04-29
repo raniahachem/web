@@ -28,7 +28,8 @@ class Message
 private ?DateTimeInterface $date_message = null;
 
     #[ORM\ManyToOne(inversedBy: 'messages')]
-    private ?Reclamation $id_rec = null;
+    #[ORM\JoinColumn(name: 'id_rec_id', referencedColumnName: 'id')]
+    private ?Reclamation $id_rec_id = null;
 
     #[ORM\ManyToOne(inversedBy: 'messages')]
     #[ORM\JoinColumn(name: 'id_admin_id', referencedColumnName: 'id_admin')]
@@ -71,12 +72,12 @@ public function setDateMessage(DateTimeInterface $date_message): self
 
     public function getIdRec(): ?Reclamation
     {
-        return $this->id_rec;
+        return $this->id_rec_id;
     }
 
     public function setIdRec(?Reclamation $id_rec): self
     {
-        $this->id_rec = $id_rec;
+        $this->id_rec_id = $id_rec;
 
         return $this;
     }
@@ -116,7 +117,7 @@ public function setDateMessage(DateTimeInterface $date_message): self
 }
     public function getRec(): ?string
     {
-        return $this->id_rec->getId();
+        return $this->id_rec_id->getId();
     }
     
 

@@ -44,12 +44,6 @@ class Client
         $this->reclamations = new ArrayCollection();
     }
 
-
-
-    
-
-   
-
     public function getId(): ?int
     {
         return $this->id_client;

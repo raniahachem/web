@@ -106,10 +106,10 @@ class Reclamation
 
 
 
-#[ORM\OneToMany(mappedBy: 'id_rec', targetEntity: Message::class)]
+#[ORM\OneToMany(mappedBy: 'id_rec_id', targetEntity: Message::class)]
 private $messages;
 
-#[ORM\ManyToOne(inversedBy: 'reclamations')]
+#[ORM\ManyToOne(targetEntity: Client::class, inversedBy: 'reclamations')]
 #[ORM\JoinColumn(name: 'id_client_id', referencedColumnName: 'id_client')]
 private ?Client $id_client_id = null;
 
@@ -146,9 +146,9 @@ public function getIdClient(): ?Client
     return $this->id_client_id;
 }
 
-public function setIdClient(?Client $id_client_id): self
+public function setIdClient(?Client $id_client): self
 {
-    $this->id_client_id = $id_client_id;
+    $this->id_client_id = $id_client;
 
     return $this;
 }
