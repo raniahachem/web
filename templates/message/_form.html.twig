@@ -1,0 +1,5 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-primary w-50 py-2">{{ button_label|default('Envoyer') }}</button>
+    <a href="{{ path('app_rec_index') }}">back to list</a>
+{{ form_end(form) }}

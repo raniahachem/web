@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<title>New Payement</title>
+
+{% block body %}
+    <h1>Create new Payement</h1>
+
+    {{ include('payement/_form.html.twig') }}
+
+    <a href="{{ path('app_payement_index') }}">back to list</a>
+{% endblock %}

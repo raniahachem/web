@@ -1,0 +1,20 @@
+ 
+<link href="{{ asset('css/update.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('css/home.css') }}" rel="stylesheet" type="text/css" />
+
+<body><div class="bg-black rounded h-100 p-4">
+    <h1 class="mb-4 text-white">Update</h1>
+    {{ form_start(form, {'attr': {'class': 'app_conducteur_form'}}) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.nom_conducteur, {'attr': {'class': 'app_update'}}) }}
+    {{ form_row(form.prenom_conducteur, {'attr': {'class': 'app_update'}}) }}
+    {{ form_row(form.cin_conducteur, {'attr': {'class': 'app_update'}}) }}
+    {{ form_row(form.ville_conducteur, {'attr': {'class': 'app_update'}}) }}
+    {{ form_row(form.telephone_conducteur, {'attr': {'class': 'app_update'}}) }}
+    {{ form_row(form.email_conducteur, {'attr': {'class': 'app_update'}}) }}
+    {{ form_row(form.mdp_conducteur, {'attr': {'class': 'app_update'}}) }}
+    {{ form_row(form.type_de_permis, {'attr': {'class': 'app_update'}}) }}
+    {{ form_row(form.image_conducteur, {'attr': {'class': 'app_update' ,'type':'file'}}) }}
+    
+    {{ form_end(form) }}
+</div></body>

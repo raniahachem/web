@@ -1,0 +1,48 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}La liste des offres{% endblock %}
+
+
+{% block body %}
+    <h1>La liste des offres</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Destination</th>
+                <th>Pt_depart</th>
+                <th>Prix</th>
+                <th>Type_vehicule</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for offre in offres %}
+            <tr>
+                <td>{{ offre.id }}</td>
+                <td>{{ offre.Destination }}</td>
+                <td>{{ offre.ptDepart }}</td>
+                <td>{{ offre.prix }}</td>
+                <td>{{ offre.typeVehicule }}</td>
+                <td>
+                    <a href="{{ path('app_offre_show_client', {'id': offre.id}) }}" >show</a>
+                    <a href="{{ path('app_reservation_new_reserver', {'id': offre.id}) }}">Réserver</a>
+                </td>
+                    <td>
+                      {% if offre.destination|length > 0 %}
+                      <span style="color: #90EE90;">Disponible</span>
+                      {% else %}
+                           <span style="color: #FF7F7F;">Offre non disponible </span>
+                      {% endif %}
+                    </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table> 
+    
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'backbase.html.twig' %}
+
+{% block title %}Reservation{% endblock %}
+
+{% block body %}
+    <h1>Reservation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reservation.id }}</td>
+            </tr>
+            <tr>
+                <th>Nb_place</th>
+                <td>{{ reservation.nbPlace }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ reservation.date ? reservation.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Point_de_depart</th>
+                <td>{{ reservation.pointDeDepart }}</td>
+            </tr>
+            <tr>
+                <th>Point_arrive</th>
+                <td>{{ reservation.pointArrive }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <a href="{{ path('app_reservation_index') }}" target="_blank" class="btn btn-primary">back to list</a>
+
+
+    {{ include('reservation/_delete_form.html.twig') }}
+{% endblock %}

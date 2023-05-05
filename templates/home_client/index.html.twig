@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+    <title>AutoXpress</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Oswald:wght@600&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<div class="bg-secondary rounded h-100 p-4">
+    <h6 class="mb-4">Sign Up</h6>
+    <form action="{{ path('app_client_new') }}" method="post" enctype="multipart/form-data"><form action="{{ path('app_client_new') }}" method="post" enctype="multipart/form-data">
+
+
+ {{ form_start(form) }}
+        <div class="mb-3">
+            <label for="cin_client" class="form-label">CIN:</label>
+            {{ form_widget(form.cin_client, {'attr': {'class': 'form-control', 'id': 'cin_client'}}) }}
+        </div>
+            <div class="mb-3">
+            <label for="nom_client" class="form-label">Nom:</label>
+            {{ form_widget(form.nom_client, {'attr': {'class': 'form-control', 'id': 'nom_client'}}) }}
+        </div>
+        
+            <div class="mb-3">
+            <label for="prenom_client" class="form-label">Prenom:</label>
+            {{ form_widget(form.prenom_client, {'attr': {'class': 'form-control', 'id': 'prenom_client'}}) }}
+        </div>
+         
+            <div class="mb-3">
+            <label for="telephone_client" class="form-label">Telephone:</label>
+            {{ form_widget(form.telephone_client, {'attr': {'class': 'form-control', 'id': 'telephone_client'}}) }}
+        </div>
+         <div class="mb-3">
+            <label for="email_client" class="form-label">Email:</label>
+            {{ form_widget(form.email_client, {'attr': {'class': 'form-control', 'id': 'email_client'}}) }}
+        </div>
+        <div class="mb-3">
+            <label for="ville_client" class="form-label">Ville:</label>
+            {{ form_widget(form.ville_client, {'attr': {'class': 'form-control', 'id': 'ville_client'}}) }}
+        </div>
+          <div class="mb-3">
+            <label for="mdp_client" class="form-label">Mot de passe:</label>
+            {{ form_widget(form.mdp_client, {'attr': {'class': 'form-control', 'id': 'mdp_client'}}) }}
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        {{ form_end(form) }}
+    </form>
+</div>
+
+</body>
+</html>

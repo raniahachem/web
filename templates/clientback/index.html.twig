@@ -1,0 +1,16 @@
+
+<link href="{{ asset('css/update.css') }}" rel="stylesheet" type="text/css" />
+
+<div class="bg-black rounded h-100 p-4">
+    <h1 class="mb-4 text-white">Update</h1>
+    {{ form_start(form, {'attr': {'class': 'app_client_form'}}) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.nom_client, {'attr': {'class': 'app_update'}}) }}
+    {{ form_row(form.prenom_client, {'attr': {'class': 'app_update'}}) }}
+    {{ form_row(form.cin_client, {'attr': {'class': 'app_update'}}) }}
+    {{ form_row(form.ville_client, {'attr': {'class': 'app_update'}}) }}
+    {{ form_row(form.telephone_client, {'attr': {'class': 'app_update'}}) }}
+    {{ form_row(form.email_client, {'attr': {'class': 'app_update'}}) }}
+    {{ form_row(form.mdp_client, {'attr': {'class': 'app_update'}}) }}
+    {{ form_end(form) }}
+</div>

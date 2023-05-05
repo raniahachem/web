@@ -1,0 +1,169 @@
+{% extends 'backbase.html.twig' %}
+{% block title %}Reclamation{% endblock %}
+{% block header %}
+       
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-secondary navbar-dark">
+                <a href="dashboard" class="navbar-brand mx-4 mb-3">
+              <img class="logo" src="{{ asset('img/logo.png') }}" alt="Logo" style="width: 150px;margin-top: -50px;    
+margin-bottom   : -67px; ">
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="img/profile.png" alt="" style="width: 40px; height: 40px;">
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0">Balkis Hmidi</h6>
+                        <span>Admin</span>
+                    </div>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="dashboard" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <div class="nav-item dropdown">
+                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-user-edit me-2"></i>Utilisateurs</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="#" class="dropdown-item">Clients</a>
+                            <a href="#" class="dropdown-item">Conducteur</a>
+                        </div>
+                    </div>
+                    <a href="{{ path('app_offre_index') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Offres</a>
+                    <a href="#" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Reservations</a>
+                    <a  href="{{ path('app_commentaire') }}" class="nav-item nav-link "><i class="fa fa-table me-2"></i>Commentaire</a>
+                    <a href="{{ path('app_avis') }}" class="nav-item nav-link "><i class="fa fa-star me-2"></i>Avis</a>
+
+{% block header %}
+       
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-secondary navbar-dark">
+                <a href="dashboard" class="navbar-brand mx-4 mb-3">
+              <img class="logo" src="{{ asset('img/logo.png') }}" alt="Logo" style="width: 150px;margin-top: -50px;    
+margin-bottom   : -67px; ">
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="img/profile.png" alt="" style="width: 40px; height: 40px;">
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0">Balkis Hmidi</h6>
+                        <span>Admin</span>
+                    </div>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="dashboard" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <div class="nav-item dropdown">
+                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-user-edit me-2"></i>Utilisateurs</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="#" class="dropdown-item">Clients</a>
+                            <a href="#" class="dropdown-item">Conducteur</a>
+                        </div>
+                    </div>
+                    <a href="#" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Offres</a>
+                    <a href="#" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Reservations</a>
+                    <a  href="{{ path('app_commentaire') }}" class="nav-item nav-link active "><i class="fa fa-table me-2"></i>Commentaire</a>
+                    <a href="{{ path('app_avis') }}" class="nav-item nav-link "><i class="fa fa-star me-2"></i>Avis</a>
+                       <a href="/contratf/back"  class="nav-item nav-link" ><i class="far fa-file-alt me-2"></i>Contrats</a>
+                    <a href="/aff" class="nav-item nav-link " ><i class="fa fa-keyboard me-2"></i>Réclamations</a>
+                <a href="/message/aff" class="nav-item nav-link "><i class="fa fa-table me-2"></i>Messages</a>
+                </div>
+               
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+
+{% endblock %}                    <a href="/aff" class="nav-item nav-link active" ><i class="fa fa-keyboard me-2"></i>Réclamations</a>
+                <a href="/message/aff" class="nav-item nav-link "><i class="fa fa-table me-2"></i>Messages</a>
+                </div>
+               
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+
+{% endblock %}
+{% block body %}
+<div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Les réclamations</h6>
+                        <a href="">Rafraichir</a>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+    <a href="{{ path('app_rec_reponse')}}" class="btn btn-sm bg-info text-dark">Voir les réclamations à traiter</a> 
+    <a href="{{ path('stat') }}" class="btn btn-sm bg-info text-dark">Statistiques</a>              
+</div>
+                    <div class="table-responsive">
+                    <h1><span style="font-size: 24px; color: white; background-color: black; padding: 5px; border-radius: 5px;">Nombre de réclamation reçu: ({{ reclamations.getTotalItemCount }})</span></h1>
+                        <table class="table text-start align-middle table-bordered table-hover mb-0" style="width: 90%; border-color: white;">
+                            <thead>
+                                <tr class="text-white">
+                                    
+                                    <th scope="col"style="color: #FF7F50;">Id</th>
+                                    <th scope="col"style="color: #FF7F50;">Type</th>
+                                    <th scope="col"style="color: #FF7F50;">Date</th>
+                                    <th scope="col"style="color: #FF7F50;">Description</th>
+                                    <th scope="col"style="color: #FF7F50;">Client</th>
+                                    <th scope="col"style="color: #FF7F50;">Action</th>
+                                    <th scope="col"style="color: #FF7F50;">État</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for reclamation in reclamations %}
+                 <tr>
+    <td style="color: white">{{ reclamation.id }}</td>
+    <td style="color: white">{{ reclamation.type }}</td>
+    <td style="color: white">{{ reclamation.dateR ? reclamation.dateR|date('Y-m-d') : '' }}</td>
+    <td style="color: white">{{ reclamation.description }}</td>
+    <td style="color: white">{{ reclamation.getClientName() }}</td>
+    <td>
+         <div style="display: flex; flex-direction: column;">
+                                        <a href="{{ path('app_rec_show', {'id': reclamation.id}) }}" style="background-color: #FF7F50; color: white; padding: 10px 20px; border: 2px solid #000000; text-decoration: none; margin-bottom: 10px; border-radius: 5px;">Afficher</a>
+                                        <a href="{{ path('app_message_new', {'id': reclamation.id}) }}" style="background-color: #FF7F50; color: white; padding: 10px 20px; border: 2px solid #000000; text-decoration: none; border-radius: 5px;">Répondre</a>
+                                    </div>
+    </td>
+   <td>
+    {% if reclamation.messages|length > 0 %}
+        <span style="color: #90EE90;">Déjà répondu</span>
+    {% else %}
+        <span style="color: #FF7F7F;">Pas encore de réponse</span>
+    {% endif %}
+</td>
+
+</tr>
+                                {% else %}
+                            <tr>
+                                <td colspan="5">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {{ knp_pagination_render(reclamations) }}
+                    </div>
+                </div>
+            </div>
+            
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("table tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+{% endblock %}
+
+
+
+
+
+
+

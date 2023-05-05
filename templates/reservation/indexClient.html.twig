@@ -1,0 +1,39 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}La liste des reservations{% endblock %}
+
+{% block body %}
+    <h1>La liste des reservations</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nb_place</th>
+                <th>Date</th>
+                <th>Point_de_depart</th>
+                <th>Point_arrive</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.nbPlace }}</td>
+                <td>{{ reservation.date ? reservation.date|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation.pointDeDepart }}</td>
+                <td>{{ reservation.pointArrive }}</td>
+                <td>
+                    <a href="{{ path('app_reservation_showfront', {'id': reservation.id}) }}" target="_blank" class="btn btn-primary">show</a>
+             </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_offre_index_Client') }}" target="_blank" class="btn btn-primary">Create new</a>
+{% endblock %}

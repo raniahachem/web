@@ -1,0 +1,62 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}New Vehicule
+{% endblock %}
+
+{% block body %}
+    <h1>Create new Vehicule</h1>
+
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {{ include('vehicule/_form.html.twig') }}
+
+    <a href="{{ path('app_vehicule_contoller_index') }}">back to list</a>
+    <script>
+        const marqueChoices = {
+            'voiture': ['Audi', 'BMW', 'Chevrolet', 'Ferrari', 'Ford', 'Hyundai', 'Mercedes', 'Toyota', 'Volkswagen'],
+            'van': ['Mercedes', 'Ford', 'Chevrolet', 'Dodge', 'Nissan', 'RAM', 'Toyota', 'Volkswagen', 'Fiat', 'GMC'],
+            'camion': ['Ford', 'Chevrolet', 'RAM', 'GMC', 'Toyota', 'Nissan', 'Jeep', 'Dodge'],
+            'bus': ['Blue Bird', 'Thomas Built Buses', 'Gillig', 'New Flyer', 'Prevost', 'Mci', 'Van Hool']
+        };
+
+        function capitalizeWords(str) {
+            return str.replace(/\w\S*/g, function (txt) {
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            });
+        }
+
+        function updateMarqueChoices() {
+    const typeSelect = document.getElementById('vehicule_typeDyVehicule');
+    const marqueSelect = document.getElementById('vehicule_marque');
+    const selectedType = typeSelect.value;
+    const initialSelectedMarque = marqueSelect.value;
+
+    if (marqueChoices.hasOwnProperty(selectedType)) {
+        marqueSelect.innerHTML = '';
+
+        const choices = marqueChoices[selectedType];
+        for (const choice of choices) {
+            const option = document.createElement('option');
+            option.value = choice;
+            option.text = capitalizeWords(choice);
+            marqueSelect.add(option);
+
+            // Set the initial selected marque value
+            if (choice === initialSelectedMarque) {
+                option.selected = true;
+            }
+        }
+    }
+}
+
+
+        const typeSelect = document.getElementById('vehicule_typeDyVehicule');
+        typeSelect.addEventListener('change', updateMarqueChoices);
+
+        updateMarqueChoices();
+    </script>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Reclamation{% endblock %}
+
+{% block body %}
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Mes réclamations</h6>
+            <a href="">Show All</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-white">
+                        
+                        <th scope="col">Type</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">État</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reclamation in reclamations %}
+                    <tr>
+                        <td>{{ reclamation.type }}</td>
+                        <td>{{ reclamation.dateR ? reclamation.dateR|date('Y-m-d') : '' }}</td>
+                        <td>{{ reclamation.description }}</td>
+                        <td>
+                            
+            {% if reclamation.messages|length > 0 %}
+                {% set last_message = reclamation.messages|sort((a, b) => b.DateMessage<=> a.DateMessage)|first %}
+                <button class="btn btn-success" onclick="window.location.href='{{ path('app_message_showpourclient', {'id': last_message.id}) }}'">Afficher la réponse</button>
+            {% else %}
+                Pas encore de réponse
+            {% endif %}
+        
+                    <td>
+<a href="{{ path('app_rec_showclient', {'id': reclamation.id}) }}" style="background-color: red; color: white; border-radius: 10px; padding: 10px 20px; text-decoration: none;">afficher</a>
+<a href="{{ path('app_rec_edit', {'id': reclamation.id}) }}" style="background-color: red; color: white; border-radius: 10px; padding: 10px 20px; text-decoration: none;">modifier</a>
+</td>
+
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    function afficherReponse(id) {
+        // rediriger vers la page de la réclamation avec l'id donné en paramètre
+        window.location.href = "{{ path('app_rec_show', {'id': 'reclamation_id'}) }}".replace('reclamation_id', id);
+    }
+</script>
+{% endblock %}

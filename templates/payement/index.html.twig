@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<title>Payement index</title>
+
+{% block body %}
+    <h1>Payement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Client</th>
+                <th>ModePayment</th>
+                <th>Prix</th>
+                <th>PaymentDate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for payement in payements %}
+            <tr>
+                <td>{{ payement.id }}</td>
+                <td>{{ payement.client }}</td>
+                <td>{{ payement.modePayment }}</td>
+                <td>{{ payement.prix }}</td>
+                <td>{{ payement.paymentDate ? payement.paymentDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_payement_show', {'id': payement.id}) }}">show</a>
+                    <a href="{{ path('app_payement_edit', {'id': payement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_payement_new') }}">Create new</a>
+{% endblock %}

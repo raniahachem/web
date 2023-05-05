@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<title>Edit Payement</title>
+
+{% block body %}
+    <h1>Edit Payement</h1>
+
+    {{ include('payement/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_payement_index') }}">back to list</a>
+
+    {{ include('payement/_delete_form.html.twig') }}
+{% endblock %}

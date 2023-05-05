@@ -1,0 +1,11 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Ajouter une nouvelle offre{% endblock %}
+
+{% block body %}
+    <h1>Crée une nouvelle offre</h1>
+
+    {{ include('offre/_form.html.twig') }}
+
+    <a href="{{ path('app_offre_index_Client') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>AutoXpress</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Oswald:wght@600&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<div class="bg-secondary rounded h-100 p-4">
+    <h6 class="mb-4">Sign Up</h6>
+
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+    
+
+
+   
+{{ form_start(registrationForm, {'attr': {'class': 'bg-secondary rounded h-100 p-4'}}) }}
+    <div class="mb-3">
+        <label for="cin_conducteur" class="form-label">CIN:</label>
+        {{ form_widget(registrationForm.cin_conducteur, {'attr': {'class': 'form-control', 'id': 'cin_conducteur'}}) }}
+    </div>
+    <div class="mb-3">
+        <label for="nom_conducteur" class="form-label">Nom:</label>
+        {{ form_widget(registrationForm.nom_conducteur, {'attr': {'class': 'form-control', 'id': 'nom_conducteur'}}) }}
+    </div>
+    <div class="mb-3">
+        <label for="prenom_conducteur" class="form-label">Prénom:</label>
+        {{ form_widget(registrationForm.prenom_conducteur, {'attr': {'class': 'form-control', 'id': 'prenom_conducteur'}}) }}
+    </div>
+    <div class="mb-3">
+        <label for="telephone_conducteur" class="form-label">Téléphone:</label>
+        {{ form_widget(registrationForm.telephone_conducteur, {'attr': {'class': 'form-control', 'id': 'telephone_conducteur'}}) }}
+    </div>
+    <div class="mb-3">
+        <label for="email_conducteur" class="form-label">Email:</label>
+        {{ form_widget(registrationForm.email_conducteur, {'attr': {'class': 'form-control', 'id': 'email_conducteur', 'type': 'email'}}) }}
+    </div>
+    <div class="mb-3">
+        <label for="ville_conducteur" class="form-label">Ville:</label>
+        {{ form_widget(registrationForm.ville_conducteur, {'attr': {'class': 'form-control', 'id': 'ville_conducteur'}}) }}
+    </div>
+    <div class="mb-3">
+        <label for="type_de_permis" class="form-label">Type de permis:</label>
+        {{ form_widget(registrationForm.type_de_permis, {'attr': {'class': 'form-control', 'id': 'type_de_permis'}}) }}
+    </div>
+    <div class="mb-3">
+        <label for="image_conducteur" class="form-label">Image:</label>
+        {{ form_widget(registrationForm.image_conducteur, {'attr': {'type': 'file', 'class': 'form-control bg-dark', 'id': 'formFile', 'name': 'form[image_conducteur]'}}) }}
+    </div>
+    <div class="mb-3">
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password',
+            'attr': {'class': 'form-control', 'id': 'mdp_conducteur', 'type': 'password'}
+        }) }}
+    </div>
+    <div class="mb-3 form-check">
+        {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input', 'id': 'agreeTerms'}}) }}
+        <label class="form-check-label" for="agreeTerms">
+            {{ form_label(registrationForm.agreeTerms, 'I agree to the terms of service') }}
+        </label>
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+    {{ form_end(registrationForm) }}
+    <a href="login">Already have an account?</a>
+    </div>

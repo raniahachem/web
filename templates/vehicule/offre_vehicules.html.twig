@@ -1,0 +1,38 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Available vehicles
+{% endblock %}
+
+{% block body %}
+	<h1>Available vehicles</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Immatriculation</th>
+				<th scope="col">Type</th>
+				<th scope="col">Marque</th>
+				<th scope="col">Etat</th>
+				<th scope="col">Kilometrage</th>
+				<th scope="col">imagev</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			{% for vehicule in vehicules %}
+				<tr>
+					<td>{{ vehicule.id }}</td>
+					<td>{{ vehicule.typeDyVehicule }}</td>
+					<td>{{ vehicule.marque }}</td>
+					<td>{{ vehicule.etat }}</td>
+					<td>{{ vehicule.kilometrage }}</td>
+					<td>{{ vehicule.imagev }}</td>
+					<td>
+						<a href="{{ path('app_vehicule_contoller_choose', {'id': vehicule.id, 'idConducteur': conducteur_id}) }}">Choose</a>
+
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

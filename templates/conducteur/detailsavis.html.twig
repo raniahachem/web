@@ -1,0 +1,215 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block body %}
+
+
+
+  <section id="review">
+  <!-- details Start -->
+  <div class="h-100 bg-secondary rounded p-4">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h6 class="mb-0">Details</h6>
+      <a href="">Rating</a>
+    </div>
+    {% for avis in avisData %}
+      {% if avis.conducteur.getIdConducteur() == id %}
+      <div class="d-flex align-items-center border-bottom py-3">
+        <img class="rounded-circle flex-shrink-0" src="/img/profile.png" alt="" style="width: 40px; height: 40px;">
+        <div class="w-100 ms-3">
+          <div class="d-flex w-100 justify-content-between">
+            <h6 class="mb-0">{{ avis.client.getNomClient() }} {{ avis.client.getPrenomClient() }}</h6>
+            <div class="star-rating">
+              {% for i in 1..5 %}
+              {% if i <= avis.avis.getRating() %}
+              <span class="fa fa-star checked"></span>
+              {% else %}
+              <span class="fa fa-star"></span>
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+
+
+
+ 
+
+    
+
+ 
+
+    <!-- Template Javascript -->
+ <script>
+  const conducteurs = document.querySelectorAll(".driver-rating");
+
+  for (let i = 0; i < conducteurs.length; i++) {
+    const stars = conducteurs[i].querySelectorAll(".fa-star");
+
+    for (let j = 0; j < stars.length; j++) {
+      stars[j].addEventListener("click", function() {
+        const ratingInput = conducteurs[i].parentNode.querySelector(".driver-rating-value");
+        const index = parseInt(this.getAttribute("data-rating"));
+        
+        for (let k = 0; k < stars.length; k++) {
+          if (k < index) {
+            stars[k].classList.add("rated");
+          } else {
+            stars[k].classList.remove("rated");
+          }
+        }
+        
+        ratingInput.value = index;
+      });
+    }
+  }
+</script>
+ <script>
+  const conducteurs = document.querySelectorAll(".driver-rating");
+
+  for (let i = 0; i < conducteurs.length; i++) {
+    const stars = conducteurs[i].querySelectorAll(".fa-star");
+
+    for (let j = 0; j < stars.length; j++) {
+      stars[j].addEventListener("click", function() {
+        const ratingInput = conducteurs[i].parentNode.querySelector(".driver-rating-value");
+        const index = parseInt(this.getAttribute("data-rating"));
+        
+        for (let k = 0; k < stars.length; k++) {
+          if (k < index) {
+            stars[k].classList.add("rated");
+          } else {
+            stars[k].classList.remove("rated");
+          }
+        }
+        
+        ratingInput.value = index;
+      });
+    }
+  }
+</script>
+<style>
+  .fa-star {
+    color: #ccc;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .fa-star.rated,
+  .fa-star.hovered {
+    color: yellow;
+  }
+.star-rating {
+  display: inline-block;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.fa-star {
+  color: #ccc;
+}
+
+.checked {
+  color: #f7d32b;
+}
+
+
+  #avis-form-container {
+  display: block;
+}
+
+#avis-form-container.hidden {
+  display: none;
+}
+</style>
+<script>
+const addCommentBtn = document.querySelector('.add-comment-btn');
+const commentFormContainer = document.querySelector('#comment-form-container');
+
+addCommentBtn.addEventListener('click', () => {
+    if (commentFormContainer.hasAttribute('hidden')) {
+        commentFormContainer.removeAttribute('hidden');
+    } else {
+        commentFormContainer.setAttribute('hidden', '');
+    }
+});
+</script>
+
+
+
+
+    <!-- Template Javascript -->
+    <script>(function ($) {
+    "use strict";
+
+    // Spinner
+    var spinner = function () {
+        setTimeout(function () {
+            if ($('#spinner').length > 0) {
+                $('#spinner').removeClass('show');
+            }
+        }, 1);
+    };
+    spinner();
+    
+    
+    // Initiate the wowjs
+    new WOW().init();
+
+
+    // Sticky Navbar
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+            $('.sticky-top').addClass('shadow-sm').css('top', '0px');
+        } else {
+            $('.sticky-top').removeClass('shadow-sm').css('top', '-100px');
+        }
+    });
+    
+    
+    // Back to top button
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+            $('.back-to-top').fadeIn('slow');
+        } else {
+            $('.back-to-top').fadeOut('slow');
+        }
+    });
+    $('.back-to-top').click(function () {
+        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        return false;
+    });
+
+
+    // Testimonials carousel
+    $('.testimonial-carousel').owlCarousel({
+        autoplay: true,
+        smartSpeed: 1000,
+        loop: true,
+        nav: false,
+        dots: true,
+        items: 1,
+        dotsData: true,
+    });
+
+    
+})(jQuery);
+
+</script>
+<script>
+const addCommentBtn = document.querySelector('.add-avis-btn');
+const commentFormContainer = document.querySelector('#avis-form-container');
+
+addCommentBtn.addEventListener('click', () => {
+  commentFormContainer.classList.toggle('hidden');
+});
+</script>
+
+    <script src="/js/main.js"></script>
+{% endblock %}

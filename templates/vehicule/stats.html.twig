@@ -1,0 +1,25 @@
+{# templates/vehicule/stats.html.twig #}
+
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Vehicle Statistics{% endblock %}
+
+{% block body %}
+    <h1>Vehicle Statistics</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Vehicle Type</th>
+                <th>Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stat in vehicleStats %}
+                <tr>
+                    <td>{{ stat.vehicleType }}</td>
+                    <td>{{ stat.count }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

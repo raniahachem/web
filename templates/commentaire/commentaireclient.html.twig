@@ -1,0 +1,18 @@
+  <link href="{{ asset('css/update.css') }}" rel="stylesheet" type="text/css" />
+
+
+<body>
+
+
+            <div class="bg-black rounded h-100 p-4">
+                <h1 class="mb-4 text-white">Update</h1>
+                {{ form_start(form, {'attr': {'class': 'app_commentaire_form'}}) }}
+                {{ form_errors(form) }}
+                {{ form_row(form.id_conducteur, {'attr': {'class': 'app_commentaire_update'}}) }}
+                {{ form_row(form.id_client, {'attr': {'class': 'app_commentaire_update'}}) }}
+                {{ form_row(form.contenu, {'attr': {'class': 'app_commentaire_update'}}) }}
+              
+                {{ form_end(form) }}
+            </div>
+       
+           </body>

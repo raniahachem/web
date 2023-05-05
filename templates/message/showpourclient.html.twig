@@ -1,0 +1,33 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Message{% endblock %}
+{% block body %}
+<div class="container-fluid d-flex align-items-center justify-content-center bg-white" style="height: 600px;">
+  <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+    <div class="h-400 d-flex flex-column justify-content-center p-4" style="border-radius: 10px; background-color: #333333; width: 90%; margin: 0 auto; height: 500px;">
+
+      <p class="d-inline-flex bg-white text-primary py-1 px-3 me-auto" style="border-radius: 5px;">Message reçu suite à votre réclamation</p>
+      <div>
+        <div class="d-flex justify-content-between border-bottom py-2">
+          <h6 class="text-uppercase mb-0 text">Contenu</h6>
+        </div>
+        <div>
+          <span class="text" style="color: #FF7F50;">{{ message.contenu }}</span>
+        </div>
+        <div class="pt-3" style="color: #FF7F50;">
+  Cordialement, <br>
+  L'équipe du service client.
+</div>
+        <div class="d-flex justify-content-between border-bottom py-2">
+          <h6 class="text-uppercase mb-0 text">Date et heure</h6>
+        </div>
+        <div>
+          <span class="text-uppercase" style="color: #FF7F50;">{{ message.dateMessage ? message.dateMessage|date('d/m/Y H:i') : '' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

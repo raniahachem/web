@@ -1,0 +1,53 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Vehicule index
+{% endblock %}
+
+{% block body %}
+    <h1>Vehicule index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Immatriculation</th>
+                <th>TypeDuVehicule</th>
+                <th>Marque</th>
+                <th>Etat</th>
+                <th>Kilometrage</th>
+                <th>Imagev</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vehicule in vehicules %}
+                <tr>
+                    <td>{{ vehicule.id }}</td>
+                    <td>{{ vehicule.typeDyVehicule }}</td>
+                    <td>{{ vehicule.marque }}</td>
+                    <td>{{ vehicule.etat }}</td>
+                    <td>{{ vehicule.kilometrage }}</td>
+                    <td>{{ vehicule.imagev }}</td>
+                    <td>
+                        {% if vehicule.id is not empty %}
+                            <a href="{{ path('app_vehicule_contoller_show', {'id': vehicule.id}) }}" class="btn btn-primary">Show</a>
+                        {% else %}
+                            <span class="btn btn-primary disabled">Show</span>
+                        {% endif %}
+
+                        {% if vehicule.id is not empty %}
+                            <a href="{{ path('app_vehicule_contoller_edit', {'id': vehicule.id}) }}" class="btn btn-primary">Edit</a>
+                        {% else %}
+                            <span class="btn btn-primary disabled">Edit</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8">no records found</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_vehicule_contoller_new') }}">Create new</a>
+{% endblock %}

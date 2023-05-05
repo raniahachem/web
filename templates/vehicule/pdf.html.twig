@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ vehicule.id }}</title>
+</head>
+<body>
+    <h1>{{ vehicule.id }}</h1>
+    <p>Type du véhicule: {{ vehicule.typeDyVehicule }}</p>
+    <p>Marque: {{ vehicule.marque }}</p>
+    <p>Etat: {{ vehicule.etat }}</p>
+    <p>Kilometrage: {{ vehicule.kilometrage }}</p>
+    {% if vehicule.imagev is not null %}
+        <img src="{{ asset('uploads/imagev/' ~ vehicule.imagev) }}" alt="{{ vehicule.marque }}"/>
+    {% endif %}
+</body>
+</html>

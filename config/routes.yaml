@@ -1,0 +1,14 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+app_commentaire_search:
+    path: /commentaire/search
+    controller: App\Service\CommentaireSearchService::searchCommentaires
+    methods: [GET]
+
+
+    
+
+
+
+

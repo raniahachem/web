@@ -1,0 +1,11 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Créer une nouvelle réservation{% endblock %}
+
+{% block body %}
+    <h1>Créer une nouvelle réservation</h1>
+
+    {{ include('reservation/_form.html.twig') }}
+
+    <a href="{{ path('app_offre_index_Client') }}">back to list</a>
+{% endblock %}

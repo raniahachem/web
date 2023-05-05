@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<title>Payement</title>
+
+{% block body %}
+    <h1>Payement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ payement.id }}</td>
+            </tr>
+            <tr>
+                <th>Client</th>
+                <td>{{ payement.client }}</td>
+            </tr>
+            <tr>
+                <th>ModePayment</th>
+                <td>{{ payement.modePayment }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ payement.prix }}</td>
+            </tr>
+            <tr>
+                <th>PaymentDate</th>
+                <td>{{ payement.paymentDate ? payement.paymentDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_payement_index') }}">back to list</a>
+
+    <a href="{{ path('app_payement_edit', {'id': payement.id}) }}">edit</a>
+
+    {{ include('payement/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,21 @@
+{# ./templates/default/index.html.twig #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>My Application</title>
+    </head>
+    <body>
+        <ul>
+        {% for c in conducteur %}
+            <li>
+                {{ c.getNomConducteur}}
+            </li>
+        {% endfor %}
+        </ul>
+        
+        <div class="navigation">
+            {{ knp_pagination_render(conducteur) }}
+        </div>
+    </body>
+</html>
