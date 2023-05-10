@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="05eef36b-8412-4cd2-a9c6-19ae9007306b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/AddAbonnementForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Versions.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Versions.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/built-jar.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/built-jar.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mycompany/myapp/entities/Voiture.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/AddCarLocateurForm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/HomeForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/HomeForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/ListVoitureform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/ListAbonnementform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/modifiervoiturelocateur.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mycompany/myapp/services/ServiceVoiture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/services/ServiceAbonnement.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2PAA2htBegnvbwdP7oIJbBD8Q4C" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mahdi karray/Desktop/mobile enr/allocationv2_web&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Facets&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.mycompany.myapp.gui" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="05eef36b-8412-4cd2-a9c6-19ae9007306b" name="Changes" comment="" />
+      <created>1682889307302</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1682889307302</updated>
+      <workItem from="1682889308425" duration="1434000" />
+      <workItem from="1682891040710" duration="7000" />
+      <workItem from="1682891225629" duration="45000" />
+      <workItem from="1682891335856" duration="4714000" />
+      <workItem from="1682936794647" duration="17065000" />
+      <workItem from="1683013648284" duration="1854000" />
+      <workItem from="1683016512212" duration="4042000" />
+      <workItem from="1683134334148" duration="12966000" />
+      <workItem from="1683212505878" duration="21279000" />
+      <workItem from="1683282296157" duration="10052000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

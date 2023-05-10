@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="workshop_parsing_json_cn1-main">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JavaSE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CodeNameOneBuildClient.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
