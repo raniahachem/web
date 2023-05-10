@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="integration.jnlp">
+  <information>
+    <title>integration</title>
+    <vendor>user</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="integration.jar" size="742483" download="eager" />
+    <jar href="lib\controlsfx-8.40.11.jar" size="985420" download="eager" />
+    <jar href="lib\core-3.5.1.jar" size="603414" download="eager" />
+    <jar href="lib\core-java6-3.2.0.jar" size="544897" download="eager" />
+    <jar href="lib\gradle-wrapper.jar" size="53636" download="eager" />
+    <jar href="lib\itextpdf-5.5.9.jar" size="2287148" download="eager" />
+    <jar href="lib\javase-java6-3.2.0.jar" size="38268" download="eager" />
+    <jar href="lib\javax.mail.jar" size="659033" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
+    <jar href="lib\qrcode-generator-1.0.jar" size="30580" download="eager" />
+    <jar href="lib\qrgen-1.4.jar" size="7194" download="eager" />
+    <jar href="lib\sendgrid-java-4.9.3.jar" size="43032" download="eager" />
+    <jar href="lib\twilio-9.2.4.jar" size="4897758" download="eager" />
+    <jar href="lib\unirest-java-3.13.0.jar" size="202062" download="eager" />
+    <jar href="lib\zxing.jar" size="191436" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="integration" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="autoxpress.GUI.FXmain"  name="integration" />
+  <update check="always"/>
+</jnlp>
