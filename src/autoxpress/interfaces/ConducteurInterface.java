@@ -1,0 +1,1 @@
+package autoxpress.interfaces;import java.util.List;/** * * @author 21622 */public interface ConducteurInterface <Conducteur>{    void AddConducteur (Conducteur cl);    void UpDateConducteur (Conducteur cl, int id);    void DeleteConducteur (int id_conducteur);    public List <Conducteur> ConducteurList();    }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" onMouseDragOver="#click" prefHeight="670.0" prefWidth="1243.0" style="-fx-background-color: #F1F0F0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="autoxpress.GUI.MenuadminController">
+   <children>
+      <Pane layoutY="-7.0" prefHeight="677.0" prefWidth="259.0" style="-fx-background-color: black;">
+         <children>
+            <Button layoutX="36.0" layoutY="621.0" mnemonicParsing="false" onAction="#movetohome" prefHeight="31.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Deconnexion" />
+         </children>
+      </Pane>
+      <VBox layoutX="-3.0" layoutY="73.0" prefHeight="524.0" prefWidth="259.0" style="-fx-background-color: black;">
+         <children>
+            <Button fx:id="btnuti" mnemonicParsing="false" onAction="#conducteur" onMouseClicked="#runa" prefHeight="39.0" prefWidth="331.0" style="-fx-text-fill: black; -fx-background-color: red; -fx-background-radius: 50;" text="les conducteurs" />
+            <Button fx:id="btnuti2" mnemonicParsing="false" onAction="#clients" prefHeight="62.0" prefWidth="251.0" style="-fx-text-fill: white; -fx-background-color: black;" text="Les clients" />
+            <Button fx:id="btnres" mnemonicParsing="false" onAction="#reservation" prefHeight="62.0" prefWidth="263.0" style="-fx-text-fill: white; -fx-background-color: black;" text="Les reservations" />
+            <Button fx:id="btnrec" mnemonicParsing="false" onAction="#reclamation" prefHeight="54.0" prefWidth="263.0" style="-fx-text-fill: white; -fx-background-color: black;" text="Les reclamations " />
+            <Button fx:id="btncontrat" mnemonicParsing="false" onAction="#menucontrat" prefHeight="54.0" prefWidth="263.0" style="-fx-text-fill: white; -fx-background-color: black;" text="Les contrats" />
+            <Button fx:id="btnveh" mnemonicParsing="false" onAction="#vehicule" onMouseDragOver="#click" prefHeight="62.0" prefWidth="263.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Les vehicules" />
+            <Button fx:id="btnlivr" mnemonicParsing="false" onAction="#livAdmin" prefHeight="62.0" prefWidth="263.0" style="-fx-text-fill: white; -fx-background-color: black;" text="Livraison" />
+            <Button fx:id="btnoffre" mnemonicParsing="false" onAction="#offre" prefHeight="62.0" prefWidth="263.0" style="-fx-text-fill: white; -fx-background-color: black;" text="Les offres" />
+         </children>
+      </VBox>
+      <Button fx:id="btnpdf" layoutX="1069.0" layoutY="106.0" mnemonicParsing="false" onAction="#generatePdf" prefHeight="39.0" prefWidth="48.0" style="-fx-background-color: red; -fx-text-fill: white; -fx-background-radius: 50;" text="pdf" />
+      <TableView fx:id="tabconducteur" layoutX="275.0" layoutY="185.0" onMouseClicked="#afficherimageconducteur" prefHeight="275.0" prefWidth="923.0" style="-fx-border-color: black;">
+         <columns>
+            <TableColumn fx:id="tabid_conducteur" prefWidth="50.0" text="id" />
+            <TableColumn fx:id="tabcin_conducteur" prefWidth="94.0" text="cin" />
+            <TableColumn fx:id="tabnom_conducteur" prefWidth="184.0" text="nom_conducteur" />
+            <TableColumn fx:id="tabprenom_conducteur" prefWidth="103.0" text="prenom" />
+            <TableColumn fx:id="tabtelephone_conducteur" prefWidth="122.0" text="telephone" />
+            <TableColumn fx:id="tabemeil_conducteur" prefWidth="58.0" text="email" visible="false" />
+            <TableColumn fx:id="tabville_conducteur" prefWidth="83.0" text="ville" />
+            <TableColumn fx:id="tabmdp_conducteur" prefWidth="42.0" text="mdp_conducteur" visible="false" />
+            <TableColumn fx:id="tabtype_de_permis" prefWidth="125.0" text="type_de_permis" />
+            <TableColumn fx:id="tabimage_conducteur" prefWidth="160.0" text="photo_conducteur" />
+         </columns>
+      </TableView>
+      <Button fx:id="btndelete_conducteur" layoutX="963.0" layoutY="106.0" mnemonicParsing="false" onAction="#delete_conducteur" prefHeight="39.0" prefWidth="95.0" style="-fx-background-color: red; -fx-text-fill: white; -fx-background-radius: 50;" text="supprimer" />
+      <Button fx:id="affcond" layoutX="869.0" layoutY="105.0" mnemonicParsing="false" onAction="#afficherconducteur" prefHeight="41.0" prefWidth="87.0" style="-fx-background-color: red; -fx-text-fill: white; -fx-background-radius: 50;" text="Afficher" />
+      <TextField fx:id="tftid" layoutX="275.0" layoutY="113.0" style="-fx-border-color: black;" />
+      <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="275.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

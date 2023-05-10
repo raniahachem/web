@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/GUI/AjouterOffreController.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/GUI/LivraisonConduController.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/GUI/FXmain.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/GUI/AjoutAvisController.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/GUI/OffreAffAdmnController.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/services/reservationCRUD.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/GUI/HomepageController.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/GUI/AbonnementAdminController.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/entities/Reservation.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/services/AbonnementCRUD.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/services/PDFGenerator.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/GUI/MenuadminController.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/services/ConducteurPdfGenerator.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/entities/Abonnement.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/GUI/LoginadminController.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/entities/Offre.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/services/OffreCRUD.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/GUI/ListeContratController.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/nbproject/jfx-impl.xml</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/GUI/AjoutController.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/GUI/AbonnementClientController.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/GUI/AfficherOffreController.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/QRCodeGenerator/QRCodeGenerator.java</file>
+            <file>file:/C:/Users/rania/Downloads/JAVA-main%20(1)/JAVA-main/src/autoxpress/GUI/AbonnementController.java</file>
+        </group>
+    </open-files>
+</project-private>

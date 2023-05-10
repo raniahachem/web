@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="653.0" prefWidth="842.0" style="-fx-background-image: red;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="autoxpress.GUI.ReservationController">
+   <children>
+      <Label alignment="CENTER" layoutX="251.0" layoutY="34.0" prefHeight="37.0" prefWidth="272.0" text="      Reservation" textAlignment="CENTER">
+         <font>
+            <Font name="Bookman Old Style Bold" size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="465.0" layoutY="110.0" text="nombre de places">
+         <font>
+            <Font name="Cooper Black" size="12.0" />
+         </font></Label>
+      <Label layoutX="471.0" layoutY="147.0" text="id offre">
+         <font>
+            <Font name="Britannic Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="467.0" layoutY="218.0" text="point de depart">
+         <font>
+            <Font name="Britannic Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="468.0" layoutY="184.0" text="id_client">
+         <font>
+            <Font name="Cooper Black" size="12.0" />
+         </font></Label>
+      <Label layoutX="465.0" layoutY="288.0" text="id_conducteur">
+         <font>
+            <Font name="Britannic Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="468.0" layoutY="251.0" text="point_arrive">
+         <font>
+            <Font name="Cooper Black" size="12.0" />
+         </font></Label>
+      <Button fx:id="btnHistorique" layoutX="328.0" layoutY="188.0" mnemonicParsing="false" onAction="#showHistorique" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="historique" textFill="WHITE">
+         <font>
+            <Font name="Lucida Sans Demibold" size="13.0" />
+         </font>
+      </Button>
+      <TextField fx:id="tfIdOffre" layoutX="590.0" layoutY="143.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="tfPointDepart" layoutX="590.0" layoutY="214.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="tfPointArrive" layoutX="590.0" layoutY="247.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="tfIdConcucteur" layoutX="590.0" layoutY="284.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="tfNombrePlaces" layoutX="590.0" layoutY="105.0" style="-fx-background-radius: 10;" />
+      <Button fx:id="btnDelete" layoutX="328.0" layoutY="260.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="delete" textFill="#ef6363">
+         <font>
+            <Font name="Lucida Sans Demibold" size="13.0" />
+         </font></Button>
+      <Button fx:id="btnUpdate" layoutX="329.0" layoutY="305.0" mnemonicParsing="false" onAction="#updateReservation" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="update" textFill="#ef6363">
+         <font>
+            <Font name="Lucida Sans Demibold" size="13.0" />
+         </font></Button>
+      <Label layoutX="340.0" layoutY="231.0" text="id" />
+      <TextField fx:id="tfIdRes" layoutX="355.0" layoutY="227.0" prefHeight="25.0" prefWidth="63.0" style="-fx-background-radius: 10;" />
+      <Button fx:id="btnConfirmerReservation" layoutX="328.0" layoutY="143.0" mnemonicParsing="false" onAction="#confirmer" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="confirmer" textFill="#ef6363">
+         <font>
+            <Font name="Lucida Sans Demibold" size="13.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="tfIdClient" layoutX="590.0" layoutY="180.0" prefWidth="150.0" />
+      <Button fx:id="btnPayer" layoutX="329.0" layoutY="355.0" mnemonicParsing="false" onAction="#payer" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="payer" textFill="#ef6363">
+         <font>
+            <Font name="Lucida Sans Demibold" size="13.0" />
+         </font>
+      </Button>
+      <Label layoutX="468.0" layoutY="323.0" text="Numero">
+         <font>
+            <Font name="Cooper Black" size="12.0" />
+         </font></Label>
+      <TextField fx:id="numerotel" layoutX="593.0" layoutY="319.0" style="-fx-background-radius: 10;" />
+      <Button fx:id="btnmeteo" layoutX="329.0" layoutY="105.0" mnemonicParsing="false" onAction="#meteo" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="meteo" textFill="#fc6868">
+         <font>
+            <Font name="Lucida Sans Demibold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnback" layoutX="329.0" layoutY="402.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="back" textFill="#ef6363">
+         <font>
+            <Font name="Lucida Sans Demibold" size="13.0" />
+         </font>
+      </Button>
+      <Pane layoutY="-4.0" prefHeight="677.0" prefWidth="258.0" style="-fx-background-color: red;">
+         <children>
+            <Button layoutX="36.0" layoutY="621.0" mnemonicParsing="false" onAction="#movetohome" prefHeight="31.0" prefWidth="187.0" style="-fx-background-color: black; -fx-background-radius: 50; -fx-text-fill: white;" text="Deconnexion" />
+         </children>
+      </Pane>
+      <VBox layoutX="2.0" layoutY="90.0" prefHeight="524.0" prefWidth="252.0" style="-fx-background-color: red;">
+         <children>
+            <Button fx:id="btnoffre" mnemonicParsing="false" onAction="#offre" prefHeight="62.0" prefWidth="263.0" style="-fx-text-fill: white; -fx-background-color: red;" text="Voir les offres disponibles" />
+            <Button fx:id="btnres1" mnemonicParsing="false" onAction="#reservation" prefHeight="50.0" prefWidth="252.0" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 50;" text="Voir mes réservations" />
+            <Button fx:id="btnlivr1" mnemonicParsing="false" onAction="#livraison" prefHeight="62.0" prefWidth="263.0" style="-fx-text-fill: white; -fx-background-color: red;" text="Voir mes livraisons" />
+            <Button fx:id="btnrec1" mnemonicParsing="false" onAction="#reclamation" prefHeight="54.0" prefWidth="263.0" style="-fx-text-fill: white; -fx-background-color: red;" text="Envoyer une réclamation" />
+            <Button fx:id="btnavi" mnemonicParsing="false" onAction="#avi" prefHeight="42.0" prefWidth="259.0" style="-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 50;" text="Ajouter avi" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

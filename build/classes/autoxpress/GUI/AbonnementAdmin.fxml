@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="739.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="autoxpress.GUI.AbonnementAdminController">
+   <children>
+      <TextField fx:id="tf_id_ab" layoutX="804.0" layoutY="83.0" promptText="id" />
+      <Label layoutX="39.0" layoutY="87.0" text="Type" textFill="WHITE" />
+      <ChoiceBox fx:id="cb_type_ab" layoutX="129.0" layoutY="82.0" prefWidth="150.0" />
+      <Label layoutX="371.0" layoutY="88.0" text="Mode De Paiement" textFill="WHITE" />
+      <ChoiceBox fx:id="cb_mode_paiement_ab" layoutX="557.0" layoutY="83.0" prefWidth="150.0" />
+      <TextField fx:id="tfSearchAb" layoutX="318.0" layoutY="235.0" prefHeight="44.0" prefWidth="470.0" promptText="Recherche" />
+      <TableView fx:id="TabAbonnementR" layoutX="56.0" layoutY="289.0" prefHeight="370.0" prefWidth="1048.0">
+         <columns>
+            <TableColumn fx:id="idAbR" prefWidth="162.0" text="ID" />
+            <TableColumn fx:id="typeAbR" prefWidth="246.0" text="TYPE" />
+            <TableColumn fx:id="prixAbR" prefWidth="211.0" text="PRIX" />
+            <TableColumn fx:id="modeDePaiementAbR" prefWidth="229.0" text="MODE PAIEMENT" />
+            <TableColumn fx:id="colQrCode" prefWidth="199.0" text="QR" />
+         </columns>
+      </TableView>
+      <AnchorPane layoutY="-3.0" prefHeight="192.0" prefWidth="1216.0" style="-fx-background-color: #292855;">
+         <children>
+            <TextField fx:id="tfIdAb" layoutX="828.0" layoutY="90.0" promptText="id" />
+            <Label layoutX="63.0" layoutY="94.0" text="Type" textFill="WHITE" />
+            <ChoiceBox fx:id="cbTypeAb" disable="true" layoutX="153.0" layoutY="89.0" prefWidth="150.0" />
+            <Label layoutX="395.0" layoutY="95.0" text="Mode De Paiement" textFill="WHITE" />
+            <ChoiceBox fx:id="cbModePaiementAb" disable="true" layoutX="581.0" layoutY="90.0" prefWidth="150.0" />
+            <Button layoutX="35.0" layoutY="21.0" mnemonicParsing="false" onAction="#gotoadminmenu" text="&lt;&lt;" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

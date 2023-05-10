@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="autoxpress.GUI.LivraisonConduController">
+   <left>
+      <VBox prefHeight="612.0" prefWidth="138.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="623.0" prefWidth="142.0">
+               <children>
+                  <Button fx:id="btnAffLiv" layoutX="7.0" layoutY="522.0" mnemonicParsing="false" onAction="#afficherliv" prefHeight="26.0" prefWidth="126.0" text="Afficher" />
+                  <Button layoutX="8.0" layoutY="495.0" mnemonicParsing="false" onAction="#btn_ret_menuconducteur" prefHeight="26.0" prefWidth="123.0" text="Retourner" />
+                  <Button fx:id="btn_Livpdf" layoutX="7.0" layoutY="549.0" mnemonicParsing="false" onAction="#btn_pdf_livraison" prefHeight="26.0" prefWidth="126.0" text="PDF" />
+                  <AnchorPane layoutY="47.0" prefHeight="200.0" prefWidth="194.0" />
+                  <Button fx:id="btnrec" layoutX="9.0" layoutY="398.0" mnemonicParsing="false" onAction="#reclamation" prefHeight="54.0" prefWidth="263.0" style="-fx-text-fill: white; -fx-background-color: black;" text="Les reclamations " />
+                  <Button fx:id="btnuti" layoutX="16.0" layoutY="195.0" mnemonicParsing="false" onMouseClicked="#runa" prefHeight="39.0" prefWidth="251.0" style="-fx-text-fill: black; -fx-background-color: red; -fx-background-radius: 50;" text=" Les utilisateurs" />
+                  <Button fx:id="btnoff" layoutX="16.0" layoutY="241.0" mnemonicParsing="false" onAction="#affOffre" prefHeight="62.0" prefWidth="251.0" style="-fx-text-fill: black; -fx-background-color: RED; -fx-background-radius: 50;" text="Les offres" />
+                  <Button fx:id="btnres" layoutX="9.0" layoutY="336.0" mnemonicParsing="false" onAction="#reservation" prefHeight="62.0" prefWidth="263.0" style="-fx-text-fill: white; -fx-background-color: black;" text="Les reservations" />
+                  <Button fx:id="btncontrat" layoutX="10.0" layoutY="452.0" mnemonicParsing="false" onAction="#menucontrat" prefHeight="54.0" prefWidth="263.0" style="-fx-text-fill: white; -fx-background-color: black;" text="Les contrats" />
+                  <Button fx:id="btnuti2" layoutX="10.0" layoutY="556.0" mnemonicParsing="false" onAction="#menumessagess" prefHeight="45.0" prefWidth="263.0" style="-fx-text-fill: white; -fx-background-color: black;" text="Consulter messages" />
+                  <Button fx:id="btnveh" layoutX="9.0" layoutY="502.0" mnemonicParsing="false" onAction="#switchForm" onMouseDragOver="#click" prefHeight="62.0" prefWidth="263.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Les vehicules" />
+                  <Button fx:id="btnlivr" layoutX="10.0" layoutY="287.0" mnemonicParsing="false" onAction="#livAdmin" prefHeight="62.0" prefWidth="263.0" style="-fx-text-fill: white; -fx-background-color: black;" text="Livraison" />
+                  <Button layoutX="76.0" layoutY="713.0" mnemonicParsing="false" onAction="#movetohome" prefHeight="31.0" prefWidth="129.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Deconnexion" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <TableView fx:id="table_livraison" prefHeight="498.0" prefWidth="639.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="colid_livraison" prefWidth="75.0" text="id_livraison" />
+          <TableColumn fx:id="coladdresse_liv" prefWidth="75.0" text="addresse_liv" />
+            <TableColumn fx:id="coldestinataire" prefWidth="75.0" text="destinataire" />
+            <TableColumn fx:id="colpoids" prefWidth="87.199951171875" text="poids" />
+            <TableColumn fx:id="colcontenu" prefWidth="79.99996948242188" text="contenu" />
+            <TableColumn fx:id="colprix_liv" prefWidth="79.99996948242188" text=" prix_liv" />
+        </columns>
+      </TableView>
+   </center>
+</BorderPane>

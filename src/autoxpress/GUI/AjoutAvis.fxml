@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane id="AnchorPane" prefHeight="677.0" prefWidth="1070.0" style="-fx-background-color: #0062b9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="autoxpress.GUI.AjoutAvisController">
+   <Pane layoutX="251.0" layoutY="20.0" prefHeight="634.0" prefWidth="825.0" style="-fx-background-color: black;">
+      <children>
+      <Label layoutX="44.0" layoutY="228.0" text="ID Conducteur:" textFill="WHITE">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+          <TextField fx:id="idConducteur" layoutX="197.0" layoutY="231.0" promptText="entrez l'ID de conducteur" />
+      
+          <Label layoutX="44.0" layoutY="280.0" text="Note:" textFill="WHITE">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <Button fx:id="btnajouternote" layoutX="44.0" layoutY="343.0" mnemonicParsing="false" onAction="#ajouterNote" style="-fx-background-color: #0062b9; -fx-background-radius: 50;" text="Ajouter" textFill="WHITE">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Button fx:id="btnretour" layoutX="153.0" layoutY="343.0" mnemonicParsing="false" onAction="#retourner" prefHeight="44.0" prefWidth="93.0" style="-fx-background-color: #0062b9; -fx-background-radius: 50;" text="Retour" textFill="WHITE">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Label layoutX="44.0" layoutY="66.0" text="Ajouter une note" textFill="#0062b9">
+            <font>
+               <Font name="Sitka Subheading" size="36.0" />
+            </font>
+         </Label>
+         <TextArea fx:id="txtMoyennes" layoutX="446.0" layoutY="279.0" prefHeight="108.0" prefWidth="338.0" />
+         <Button fx:id="btnnote" layoutX="446.0" layoutY="231.0" mnemonicParsing="false" onAction="#afficherMoyennes" style="-fx-background-color: #0062b9; -fx-background-radius: 50;" text="afficher note" textFill="WHITE" />
+         <Rating fx:id="rating" layoutX="117.0" layoutY="279.0" />
+         <Label fx:id="message" layoutX="300.0" layoutY="273.0" prefHeight="44.0" prefWidth="159.0" textFill="WHITE">
+            <font>
+               <Font name="System Bold Italic" size="15.0" />
+            </font></Label>
+         <Label layoutX="44.0" layoutY="107.0" text="pour un conducteur" textFill="#0062b9">
+            <font>
+               <Font name="Sitka Subheading" size="20.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
+   <Pane layoutX="-5.0" prefHeight="677.0" prefWidth="259.0" style="-fx-background-color: red;">
+      <children>
+         <Button layoutX="36.0" layoutY="621.0" mnemonicParsing="false" onAction="#movetohome" prefHeight="31.0" prefWidth="187.0" style="-fx-background-color: black; -fx-background-radius: 50; -fx-text-fill: white;" text="Deconnexion" />
+      </children>
+   </Pane>
+   <VBox layoutX="-8.0" layoutY="80.0" prefHeight="524.0" prefWidth="259.0" style="-fx-background-color: red;">
+      <children>
+         <Button fx:id="btnoffre" mnemonicParsing="false" onAction="#offre" prefHeight="62.0" prefWidth="263.0" style="-fx-text-fill: white; -fx-background-color: red;" text="Voir les offres disponibles" />
+         <Button fx:id="btnres1" mnemonicParsing="false" onAction="#reservation" prefHeight="62.0" prefWidth="263.0" style="-fx-text-fill: white; -fx-background-color: red;" text="Voir mes réservations" />
+         <Button fx:id="btnlivr1" mnemonicParsing="false" onAction="#livraison" prefHeight="49.0" prefWidth="259.0" style="-fx-text-fill: white; -fx-background-color: red;" text="Voir mes livraisons" />
+         <Button fx:id="btnrec1" mnemonicParsing="false" onAction="#reclamation" prefHeight="54.0" prefWidth="263.0" style="-fx-text-fill: white; -fx-background-color: red;" text="Envoyer une réclamation" />
+         <Button fx:id="btnavi" mnemonicParsing="false" onAction="#avi" prefHeight="42.0" prefWidth="259.0" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 50;" text="Ajouter avi" />
+      </children>
+   </VBox></AnchorPane>
