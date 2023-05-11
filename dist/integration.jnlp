@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="integration.jar" size="742483" download="eager" />
+    <jar href="integration.jar" size="810997" download="eager" />
     <jar href="lib\controlsfx-8.40.11.jar" size="985420" download="eager" />
     <jar href="lib\core-3.5.1.jar" size="603414" download="eager" />
     <jar href="lib\core-java6-3.2.0.jar" size="544897" download="eager" />

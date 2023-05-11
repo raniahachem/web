@@ -283,8 +283,5 @@ private final String url = "jdbc:mysql://localhost:3306/autoxpress";
         return clients;
     }
 
-    @FXML
-    private void movetomenu(ActionEvent event) {
-    }
 
 }

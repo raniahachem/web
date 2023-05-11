@@ -7,6 +7,7 @@ package autoxpress.GUI;
 
 import autoxpress.entities.Offre;
 import autoxpress.utils.MyConnection;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -27,6 +28,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -68,6 +71,8 @@ public class AfficherOffreController implements Initializable {
     private Button btnrec1;
     @FXML
     private Button btnavi;
+    @FXML
+    private ImageView image1;
 
 
     /**
@@ -115,6 +120,15 @@ public class AfficherOffreController implements Initializable {
             ///////////////////select ligne 
              
         // TODO
+        
+        File file = new File("/image/logoauto2.png");
+        String localURL = "";
+        try {
+            localURL = file.toURI().toURL().toString();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        image1.setImage(new Image(localURL));
     }    
 
     @FXML

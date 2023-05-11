@@ -3,12 +3,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="763.0" prefWidth="1221.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.InscriptionclientController">
+<AnchorPane id="AnchorPane" prefHeight="763.0" prefWidth="1221.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InscriptionclientController">
    <children>
       <Pane layoutX="-10.0" prefHeight="200.0" prefWidth="1345.0" style="-fx-background-color: #292855;">
          <children>
@@ -17,6 +17,7 @@
                   <Font name="System Bold" size="31.0" />
                </font>
             </TextField>
+            <ImageView fx:id="image1" fitHeight="168.0" fitWidth="282.0" layoutX="115.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
       <Label layoutX="30.0" layoutY="287.0" text="id_client :" />
@@ -36,7 +37,7 @@
       <TextField fx:id="tftcin_client" layoutX="534.0" layoutY="282.0" />
       <TextField fx:id="tftemail_client" layoutX="900.0" layoutY="282.0" />
       <Button fx:id="btnadd_client" layoutX="1041.0" layoutY="424.0" mnemonicParsing="false" onAction="#add_client" text="add" />
-      <Label fx:id="label" layoutX="768.0" layoutY="378.0" prefHeight="21.0" prefWidth="735.0" text="Label" textFill="RED" />
+      <Label fx:id="label" layoutX="768.0" layoutY="378.0" prefHeight="21.0" prefWidth="553.0" text="Label" textFill="RED" />
       <Button layoutX="24.0" layoutY="159.0" mnemonicParsing="false" onAction="#retourtohome" style="-fx-background-color: white;" text="retour" />
    </children>
 </AnchorPane>

@@ -22,6 +22,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import autoxpress.services.ClientCRUD;
+import java.io.File;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
@@ -50,6 +53,8 @@ public class InscriptionclientController implements Initializable {
     private Button btnadd_client;
     @FXML
     private Label label;
+    @FXML
+    private ImageView image1;
 
     /**
      * Initializes the controller class.
@@ -57,6 +62,14 @@ public class InscriptionclientController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        File file = new File("/image/logoauto2.png");
+        String localURL = "";
+        try {
+            localURL = file.toURI().toURL().toString();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        image1.setImage(new Image(localURL));
     }    
 
     @FXML

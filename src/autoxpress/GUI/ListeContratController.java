@@ -129,6 +129,7 @@ import kong.unirest.json.JSONObject;
 import autoxpress.services.ConducteurCRUD;
 import autoxpress.services.ContratCRUD;
 import com.google.zxing.common.BitMatrix;
+import java.io.File;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 
@@ -220,10 +221,20 @@ public class ListeContratController implements Initializable {
     private Button btnlivr;
     @FXML
     private Button btnoffre;
+    @FXML
+    private ImageView image1;
 
     @Override
 
     public void initialize(URL location, ResourceBundle resources) {
+        File file = new File("/image/logoauto2.png");
+        String localURL = "";
+        try {
+            localURL = file.toURI().toURL().toString();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        image1.setImage(new Image(localURL));
 
         UpdateTabContrat();
 

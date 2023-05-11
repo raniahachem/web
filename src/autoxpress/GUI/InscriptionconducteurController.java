@@ -21,6 +21,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import autoxpress.services.ConducteurCRUD;
+import java.io.File;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
@@ -29,8 +33,6 @@ import autoxpress.services.ConducteurCRUD;
  */
 public class InscriptionconducteurController implements Initializable {
 
-    @FXML
-    private TextField tftid_conducteur;
     @FXML
     private TextField tftcin_conducteur;
     @FXML
@@ -51,6 +53,10 @@ public class InscriptionconducteurController implements Initializable {
     private TextField tftimage_conducteur;
     @FXML
     private Button btnadd_conducteur;
+    @FXML
+    private Button browseImageV;
+    @FXML
+    private ImageView image1;
 
     /**
      * Initializes the controller class.
@@ -58,6 +64,23 @@ public class InscriptionconducteurController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        browseImageV.setOnAction(event -> {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Choose Image");
+            File fileImageV = fileChooser.showOpenDialog(browseImageV.getScene().getWindow());
+            if (fileImageV != null) {
+                tftimage_conducteur.setText(fileImageV.getPath());
+            }
+        });
+        
+        File file = new File("/image/logoauto2.png");
+        String localURL = "";
+        try {
+            localURL = file.toURI().toURL().toString();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        image1.setImage(new Image(localURL));
     }
 
     @FXML

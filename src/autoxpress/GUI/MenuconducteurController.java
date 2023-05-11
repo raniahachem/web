@@ -5,6 +5,7 @@
  */
 package autoxpress.GUI;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -33,7 +36,7 @@ public class MenuconducteurController implements Initializable {
     @FXML
     private Button vehicule;
     @FXML
-    private Button btnrec1;
+    private ImageView image1;
 
     /**
      * Initializes the controller class.
@@ -41,9 +44,16 @@ public class MenuconducteurController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        File file = new File("/image/logoauto2.png");
+        String localURL = "";
+        try {
+            localURL = file.toURI().toURL().toString();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        image1.setImage(new Image(localURL));
     }    
 
-    @FXML
     private void reclamation(ActionEvent event) {
                try {
             Parent avisParent = FXMLLoader.load(getClass().getResource("RecConducteur.fxml"));

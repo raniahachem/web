@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -41,5 +42,6 @@
             <Font name="Sitka Subheading" size="20.0" />
          </font>
       </Label>
+      <ImageView fx:id="image1" fitHeight="202.0" fitWidth="509.0" layoutX="378.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
